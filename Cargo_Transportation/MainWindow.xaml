@@ -23,7 +23,7 @@
     </WindowChrome.WindowChrome>
     <Border Background="{StaticResource LightBrush}" WindowChrome.IsHitTestVisibleInChrome="True">
         <Grid>
-            
+            <Button Content="Test" />
         </Grid>
     </Border>
 </Window>
