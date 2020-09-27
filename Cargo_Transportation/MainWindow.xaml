@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Cargo_Transportation"
+    xmlns:logregpages="clr-namespace:Cargo_Transportation.Pages.LogRegPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="800"
@@ -14,6 +15,7 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
+
     <WindowChrome.WindowChrome>
         <WindowChrome
             CaptionHeight="{Binding TitleHeight}"
@@ -21,9 +23,19 @@
             GlassFrameThickness="0"
             ResizeBorderThickness="{Binding ResizeBorderThickness}" />
     </WindowChrome.WindowChrome>
-    <Border Background="{StaticResource LightBrush}" WindowChrome.IsHitTestVisibleInChrome="True">
+    <Border Background="{StaticResource ApplicationBrush}" WindowChrome.IsHitTestVisibleInChrome="True">
         <Grid>
-            <Button Content="Test" />
+            <Frame
+                Margin="0,100,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Source="Pages/LogRegPages/RegisterPage.xaml" />
+            <!--<Button
+                Padding="15"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Test" />-->
         </Grid>
     </Border>
+
 </Window>

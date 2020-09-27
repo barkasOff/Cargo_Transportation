@@ -11,7 +11,13 @@
     <SolidColorBrush x:Key="ClickUppanelBrush" Color="{StaticResource ClickUppanelColor}" />
     <Color x:Key="RedColor">#870000</Color>
     <SolidColorBrush x:Key="RedBrush" Color="{StaticResource RedColor}" />
-    <Color x:Key="LightColor">#c9c9c9</Color>
-    <SolidColorBrush x:Key="LightBrush" Color="{StaticResource LightColor}" />
+    <Color x:Key="ApplicationColor">#93a6ba</Color>
+    <SolidColorBrush x:Key="ApplicationBrush" Color="{StaticResource ApplicationColor}" />
+    <Color x:Key="LogRegColor">#637194</Color>
+    <SolidColorBrush x:Key="LogRegBrush" Color="{StaticResource LogRegColor}" />
+    <Color x:Key="BaseButtonColor">#78baff</Color>
+    <SolidColorBrush x:Key="BaseButtonBrush" Color="{StaticResource BaseButtonColor}" />
+    <Color x:Key="EnterBaseButtonColor">#5eadff</Color>
+    <SolidColorBrush x:Key="EnterBaseButtonBrush" Color="{StaticResource EnterBaseButtonColor}" />
 
 </ResourceDictionary>

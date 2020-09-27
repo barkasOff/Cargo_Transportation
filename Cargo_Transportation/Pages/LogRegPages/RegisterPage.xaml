@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="Cargo_Transportation.Pages.LogRegPages.RegisterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Cargo_Transportation.Pages.LogRegPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="RegisterPage"
+    mc:Ignorable="d">
+
+    <Border
+        Width="300"
+        Padding="15"
+        Background="{StaticResource LogRegBrush}"
+        BorderBrush="Black"
+        BorderThickness="1"
+        CornerRadius="10">
+        <Border.Effect>
+            <DropShadowEffect Opacity="0.2" />
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBox
+                Grid.Row="0"
+                Style="{StaticResource AuthorizationTB}"
+                Tag="Enter your login:" />
+            <TextBox
+                Grid.Row="1"
+                Style="{StaticResource AuthorizationTB}"
+                Tag="Enter your email:" />
+            <TextBox
+                Grid.Row="2"
+                Style="{StaticResource AuthorizationTB}"
+                Tag="Enter your telephone:" />
+            <DatePicker
+                Grid.Row="3"
+                BorderThickness="0"
+                SelectedDateFormat="Short" />
+            <PasswordBox
+                Grid.Row="4"
+                Style="{StaticResource AuthorizationPB}"
+                Tag="Enter your password:" />
+            <Grid Grid.Row="5" Margin="0,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    Content="Ваше фото" />
+                <TextBlock
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="Файл не выбран" />
+            </Grid>
+            <Grid Grid.Row="6" Margin="0,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    HorizontalAlignment="Right"
+                    Content="Создать" />
+                <Button
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    Content="Отмена" />
+            </Grid>
+            <Button
+                Grid.Row="7"
+                Margin="0,2"
+                Content="Уже зарегистрированы??"
+                Style="{StaticResource DescriptionButton}" />
+        </Grid>
+    </Border>
+</Page>
