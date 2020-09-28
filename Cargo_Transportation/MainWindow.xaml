@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Cargo_Transportation"
     xmlns:logregpages="clr-namespace:Cargo_Transportation.Pages.LogRegPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Cargo_Transportation.Pages"
     Title="MainWindow"
     Width="800"
     Height="450"
@@ -25,11 +26,11 @@
     </WindowChrome.WindowChrome>
     <Border Background="{StaticResource ApplicationBrush}" WindowChrome.IsHitTestVisibleInChrome="True">
         <Grid>
-            <Frame
-                Margin="0,100,0,0"
+            <pages:PageHost
+                Margin="0,150,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Source="Pages/LogRegPages/RegisterPage.xaml" />
+                CurrentPage="{Binding ApplicationPage}" />
             <!--<Button
                 Padding="15"
                 HorizontalAlignment="Center"

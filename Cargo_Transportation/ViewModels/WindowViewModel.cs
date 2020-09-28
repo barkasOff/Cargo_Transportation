@@ -1,4 +1,5 @@
-﻿using Cargo_Transportation.ViewModels.Base;
+﻿using Cargo_Transportation.Pages;
+using Cargo_Transportation.ViewModels.Base;
 using System.Windows;
 using System.Windows.Input;
 
@@ -17,6 +18,8 @@ namespace Cargo_Transportation.ViewModels
         private int _outerMarginSize = 10;
         private int _windowRadious = 0;
         private WindowDockPosition _windowDockPosition = WindowDockPosition.Undocked;
+
+        public ApplicationPage ApplicationPage { get; set; } = ApplicationPage.Login;
 
         public double MinWidth { get; private set; } = 800;
         public double MinHeight { get; private set; } = 600;

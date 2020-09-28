@@ -16,7 +16,7 @@ namespace Cargo_Transportation.Pages.LogRegPages
     /// <summary>
     /// Логика взаимодействия для LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class LoginPage : BasePage
     {
         public LoginPage()
         {
