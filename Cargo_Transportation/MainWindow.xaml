@@ -7,6 +7,7 @@
     xmlns:logregpages="clr-namespace:Cargo_Transportation.Pages.LogRegPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:Cargo_Transportation.Pages"
+    xmlns:viewModels="clr-namespace:Cargo_Transportation.ViewModels"
     Title="MainWindow"
     Width="800"
     Height="450"
@@ -26,16 +27,7 @@
     </WindowChrome.WindowChrome>
     <Border Background="{StaticResource ApplicationBrush}" WindowChrome.IsHitTestVisibleInChrome="True">
         <Grid>
-            <pages:PageHost
-                Margin="0,150,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                CurrentPage="{Binding ApplicationPage}" />
-            <!--<Button
-                Padding="15"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Content="Test" />-->
+            <pages:PageHost CurrentPage="{Binding ApplicationViewModel.CurrentPage, Source={x:Static viewModels:ViewModelLocator.Instance}}" />
         </Grid>
     </Border>
 

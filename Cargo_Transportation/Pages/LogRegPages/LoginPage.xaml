@@ -11,7 +11,10 @@
 
     <Border
         Width="250"
+        Margin="0,150,0,0"
         Padding="15"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
         Background="{StaticResource LogRegBrush}"
         BorderBrush="Black"
         BorderThickness="1"
@@ -51,6 +54,7 @@
             <Button
                 Grid.Row="3"
                 Margin="0,2"
+                Command="{Binding GOTORegisterPage}"
                 Content="Еще не зарегистрированы??"
                 Style="{StaticResource DescriptionButton}" />
         </Grid>

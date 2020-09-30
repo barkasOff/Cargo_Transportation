@@ -1,4 +1,6 @@
-﻿namespace Cargo_Transportation.Pages.LogRegPages
+﻿using Cargo_Transportation.ViewModels.LogReg;
+
+namespace Cargo_Transportation.Pages.LogRegPages
 {
     /// <summary>
     /// Логика взаимодействия для RegisterPage.xaml
@@ -8,6 +10,7 @@
         public RegisterPage()
         {
             InitializeComponent();
+            DataContext = new RegisterViewModel();
         }
     }
 }

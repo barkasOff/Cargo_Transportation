@@ -51,9 +51,6 @@ namespace Cargo_Transportation.Pages
                 case PageAnimation.SlideAndFadeInFromRight:
                     await this.SlideAndFadeInFromRight(SlideSeconds);
                     break;
-                case PageAnimation.None:
-                    await this.FadeIn(SlideSeconds);
-                    break;
             }
             PageLoadAnimation = PageAnimation.SlideAndFadeInFromRight;
         }

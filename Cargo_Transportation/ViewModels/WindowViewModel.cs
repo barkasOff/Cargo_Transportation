@@ -19,8 +19,6 @@ namespace Cargo_Transportation.ViewModels
         private int _windowRadious = 0;
         private WindowDockPosition _windowDockPosition = WindowDockPosition.Undocked;
 
-        public ApplicationPage ApplicationPage { get; set; } = ApplicationPage.Login;
-
         public double MinWidth { get; private set; } = 800;
         public double MinHeight { get; private set; } = 600;
         public double Height { get; set; }
