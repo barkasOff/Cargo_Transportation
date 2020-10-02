@@ -1,6 +1,8 @@
-﻿using Cargo_Transportation.Pages;
+﻿using Cargo_Transportation.DIHelpers;
+using Cargo_Transportation.Pages;
 using Cargo_Transportation.ViewModels.Base;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.LogReg
@@ -11,12 +13,12 @@ namespace Cargo_Transportation.ViewModels.LogReg
 
         public LoginViewModel()
         {
-            GOTORegisterPage = new RelayCommand(GOTORegisterPageMethod);
+            GOTORegisterPage = new RelayCommand(GOTORegisterPageMethodAsync);
         }
 
-        private void GOTORegisterPageMethod()
+        private void GOTORegisterPageMethodAsync()
         {
-            IoC.IoC.Application.GoToPage(ApplicationPage.Register);
+            IoC.Application.GoToPage(ApplicationPage.Register);
         }
     }
 }

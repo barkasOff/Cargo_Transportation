@@ -1,7 +1,7 @@
 ﻿using Cargo_Transportation.ViewModels;
 using Ninject;
 
-namespace Cargo_Transportation.IoC
+namespace Cargo_Transportation.DIHelpers
 {
     public static class IoC
     {

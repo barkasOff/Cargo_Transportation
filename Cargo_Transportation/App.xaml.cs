@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Cargo_Transportation.DIHelpers;
 using System.Windows;
 
 namespace Cargo_Transportation
@@ -25,7 +20,7 @@ namespace Cargo_Transportation
 
         private void ApplicationSetup()
         {
-            IoC.IoC.Setup();
+            IoC.Setup();
         }
     }
 }

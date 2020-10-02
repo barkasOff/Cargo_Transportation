@@ -1,5 +1,7 @@
-﻿using Cargo_Transportation.Pages;
+﻿using Cargo_Transportation.DIHelpers;
+using Cargo_Transportation.Pages;
 using Cargo_Transportation.ViewModels.Base;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.LogReg
@@ -10,12 +12,12 @@ namespace Cargo_Transportation.ViewModels.LogReg
 
         public RegisterViewModel()
         {
-            GOTOLoginPage = new RelayCommand(GOTOLoginPageMethod);
+            GOTOLoginPage = new RelayCommand(GOTOLoginPageMethodAsync);
         }
 
-        private void GOTOLoginPageMethod()
+        private void GOTOLoginPageMethodAsync()
         {
-            IoC.IoC.Application.GoToPage(ApplicationPage.Login);
+            IoC.Application.GoToPage(ApplicationPage.Login);
         }
     }
 }
