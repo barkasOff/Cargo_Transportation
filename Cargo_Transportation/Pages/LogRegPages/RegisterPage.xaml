@@ -31,7 +31,6 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
-                <RowDefinition />
             </Grid.RowDefinitions>
             <TextBox
                 Grid.Row="0"
@@ -45,15 +44,11 @@
                 Grid.Row="2"
                 Style="{StaticResource AuthorizationTB}"
                 Tag="Enter your telephone:" />
-            <DatePicker
-                Grid.Row="3"
-                BorderThickness="0"
-                SelectedDateFormat="Short" />
             <PasswordBox
-                Grid.Row="4"
+                Grid.Row="3"
                 Style="{StaticResource AuthorizationPB}"
                 Tag="Enter your password:" />
-            <Grid Grid.Row="5" Margin="0,2">
+            <Grid Grid.Row="4" Margin="0,2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -68,7 +63,7 @@
                     VerticalAlignment="Center"
                     Text="Файл не выбран" />
             </Grid>
-            <Grid Grid.Row="6" Margin="0,2">
+            <Grid Grid.Row="5" Margin="0,2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -83,7 +78,7 @@
                     Content="Отмена" />
             </Grid>
             <Button
-                Grid.Row="7"
+                Grid.Row="6"
                 Margin="0,2"
                 Command="{Binding GOTOLoginPage}"
                 Content="Уже зарегистрированы??"

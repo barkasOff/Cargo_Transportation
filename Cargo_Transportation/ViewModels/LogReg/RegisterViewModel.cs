@@ -1,4 +1,5 @@
 ﻿using Cargo_Transportation.DIHelpers;
+using Cargo_Transportation.Interfaces;
 using Cargo_Transportation.Pages;
 using Cargo_Transportation.ViewModels.Base;
 using System.Threading.Tasks;

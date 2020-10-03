@@ -14,4 +14,9 @@ namespace Cargo_Transportation.ValueConverters
                 return (bool)value ? Visibility.Visible : Visibility.Hidden;
         }
     }
+    public class BooleanInvertConverter : BaseValueConverter<BooleanInvertConverter>
+    {
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture) =>
+            !(bool)value;
+    }
 }

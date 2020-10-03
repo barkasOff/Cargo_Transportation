@@ -45,6 +45,7 @@
                 <Button
                     Grid.Column="0"
                     Width="Auto"
+                    Command="{Binding Login}"
                     Content="Войти" />
                 <Button
                     Grid.Column="1"

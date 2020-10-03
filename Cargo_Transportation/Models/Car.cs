@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cargo_Transportation.Models
@@ -18,7 +19,15 @@ namespace Cargo_Transportation.Models
         [Required]
         [Column(TypeName = "smallint")]
         public int LiftingCapacity { get; set; }
-        public Employee Driver { get; set; }
+        public Employee CurrentDriver { get; set; }
         public Route CurrentRoute { get; set; }
+        public List<Employee> Drivers { get; set; }
+        public List<Route> Routes { get; set; }
+
+        public Car()
+        {
+            Drivers = new List<Employee>();
+            Routes = new List<Route>();
+        }
     }
 }

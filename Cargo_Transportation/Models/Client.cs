@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cargo_Transportation.Models
 {
@@ -16,6 +17,12 @@ namespace Cargo_Transportation.Models
         public string PhoneNumber { get; set; }
         [MaxLength(20)]
         public string CompanyName { get; set; }
-        public Product Product { get; set; }
+        public Product CurrentProduct { get; set; }
+        public List<Product> Products { get; set; }
+
+        public Client()
+        {
+            Products = new List<Product>();
+        }
     }
 }

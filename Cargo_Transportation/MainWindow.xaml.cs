@@ -1,4 +1,5 @@
-﻿using Cargo_Transportation.ViewModels;
+﻿using Cargo_Transportation.DIHelpers;
+using Cargo_Transportation.ViewModels;
 using System.Windows;
 
 namespace Cargo_Transportation
@@ -13,5 +14,11 @@ namespace Cargo_Transportation
             InitializeComponent();
             DataContext = new WindowViewModel(this);
         }
+
+        private void Window_Activated(object sender, System.EventArgs e) =>
+            IoC.Application.DimmebleOverlayVisible = false;
+
+        private void Window_Deactivated(object sender, System.EventArgs e) =>
+            IoC.Application.DimmebleOverlayVisible = true;
     }
 }

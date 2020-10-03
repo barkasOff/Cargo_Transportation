@@ -1,0 +1,39 @@
+﻿<UserControl
+    x:Class="Cargo_Transportation.Controls.UserPageControls.PersonalArea"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:attachedProperties="clr-namespace:Cargo_Transportation.AttachedProperties"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:input="clr-namespace:Cargo_Transportation.Controls.Input"
+    xmlns:local="clr-namespace:Cargo_Transportation.Controls.UserPageControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Padding="10,0,10,3"
+                FontSize="24"
+                FontWeight="Bold"
+                Text="Ваши данные:"
+                TextDecorations="Underline" />
+            <StackPanel
+                Grid.Row="1"
+                Margin="10,0"
+                attachedProperties:TextEntryWidthMatcherProperty.Value="True"
+                Orientation="Vertical">
+                <input:TextEntryControl DataContext="{Binding FullName}" />
+                <input:TextEntryControl DataContext="{Binding Login}" />
+                <input:TextEntryControl DataContext="{Binding PhoneNumber}" />
+                <input:TextEntryControl DataContext="{Binding Email}" />
+                <input:TextEntryControl DataContext="{Binding CompanyName}" />
+            </StackPanel>
+        </Grid>
+    </Border>
+
+</UserControl>

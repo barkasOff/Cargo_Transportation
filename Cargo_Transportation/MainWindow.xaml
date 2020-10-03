@@ -2,18 +2,21 @@
     x:Class="Cargo_Transportation.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:attachedProperties="clr-namespace:Cargo_Transportation.AttachedProperties"
+    xmlns:controls="clr-namespace:Cargo_Transportation.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Cargo_Transportation"
     xmlns:logregpages="clr-namespace:Cargo_Transportation.Pages.LogRegPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pages="clr-namespace:Cargo_Transportation.Pages"
     xmlns:viewModels="clr-namespace:Cargo_Transportation.ViewModels"
     Title="MainWindow"
     Width="800"
     Height="450"
     MinWidth="{Binding MinWidth}"
     MinHeight="{Binding MinHeight}"
+    Activated="Window_Activated"
     AllowsTransparency="True"
+    Deactivated="Window_Deactivated"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
@@ -27,7 +30,13 @@
     </WindowChrome.WindowChrome>
     <Border Background="{StaticResource ApplicationBrush}" WindowChrome.IsHitTestVisibleInChrome="True">
         <Grid>
-            <pages:PageHost CurrentPage="{Binding ApplicationViewModel.CurrentPage, Source={x:Static viewModels:ViewModelLocator.Instance}}" />
+            <Border
+                Grid.RowSpan="2"
+                Panel.ZIndex="4"
+                Opacity="0.3">
+                <Border attachedProperties:AnimateFadeInProperty.Value="{Binding ApplicationViewModel.DimmebleOverlayVisible, Source={x:Static viewModels:ViewModelLocator.Instance}}" Background="Black" />
+            </Border>
+            <controls:PageHost CurrentPage="{Binding ApplicationViewModel.CurrentPage, Source={x:Static viewModels:ViewModelLocator.Instance}}" />
         </Grid>
     </Border>
 

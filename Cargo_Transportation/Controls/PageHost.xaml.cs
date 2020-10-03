@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using Cargo_Transportation.ViewModels.Base;
 using Cargo_Transportation.ValueConverters;
+using Cargo_Transportation.Interfaces;
+using Cargo_Transportation.Pages;
 
-namespace Cargo_Transportation.Pages
+namespace Cargo_Transportation.Controls
 {
     /// <summary>
     /// Логика взаимодействия для PageHost.xaml
