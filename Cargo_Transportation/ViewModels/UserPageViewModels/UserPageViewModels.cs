@@ -1,73 +1,116 @@
 ﻿using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Interfaces;
 using Cargo_Transportation.ViewModels.Base;
-using Cargo_Transportation.ViewModels.Input;
-using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.UserPageViewModels
 {
     public class UserPageViewModels : BaseViewModel
     {
-        public bool ShowPersonalArea { get; set; } = true;
+        public ObservableCollection<UserProductsViewModel> OutboxOrders { get; set; }
+        public ObservableCollection<UserProductsViewModel> InboxOrders { get; set; }
+        public PersonalAreaViewModel PersonalAreaVM{ get; set; }
         public bool ShowDoTheOrder { get; set; }
         public bool ShowOrders { get; set; }
-        public TextEntryViewModel FullName { get; set; }
-        public TextEntryViewModel PhoneNumber { get; set; }
-        public TextEntryViewModel Email { get; set; }
-        public TextEntryViewModel CompanyName { get; set; }
-        public TextEntryViewModel Login { get; set; }
 
         public ICommand ShowPersonalAreaCommand { get; set; }
         public ICommand ShowDoTheOrderCommand { get; set; }
         public ICommand ShowOrdersCommand { get; set; }
         public ICommand ExitCommand { get; set; }
 
-        /// <summary>
-        /// TODO: normal information
-        /// </summary>
         public UserPageViewModels()
         {
-            FullName = new TextEntryViewModel
-            {
-                Label = "ФИО",
-                OriginalText = "Сизов Борис Александрович",
-                MaxLength = 50
-            };
-            Login = new TextEntryViewModel
-            {
-                Label = "Логин",
-                OriginalText = "barkasOff",
-                MaxLength = 20
-            };
-            PhoneNumber = new TextEntryViewModel
-            {
-                Label = "Номер телефона",
-                OriginalText = "89196916135",
-                MaxLength = 11
-            };
-            Email = new TextEntryViewModel
-            {
-                Label = "Электронная почта",
-                OriginalText = "boris.sizov.2001@mail.ru",
-                MaxLength = 50
-            };
-            CompanyName = new TextEntryViewModel
-            {
-                Label = "Название компании",
-                OriginalText = "B o r o v",
-                MaxLength = 20
-            };
+            PersonalAreaVM = new PersonalAreaViewModel();
 
             ShowPersonalAreaCommand = new RelayCommand(ShowPersonalAreaMethod);
             ShowDoTheOrderCommand = new RelayCommand(ShowDoTheOrderMethod);
             ShowOrdersCommand = new RelayCommand(ShowOrdersMethod);
             ExitCommand = new RelayCommand(() => IoC.Application.GoToPage(ApplicationPage.Login));
+
+            OutboxOrders = new ObservableCollection<UserProductsViewModel>
+            {
+                new UserProductsViewModel
+                {
+                    Initials = "CL",
+                    ProfilePictureRGB = "89ccb7",
+                    Status = "Current",
+                    UserName = PersonalAreaVM.FullName.OriginalText,
+                    StatusColor = "00c541",
+                    ProductName = "Трусы"
+                },
+                new UserProductsViewModel
+                {
+                    Initials = "CL",
+                    ProfilePictureRGB = "89ccb7",
+                    Status = "Completed",
+                    UserName = PersonalAreaVM.FullName.OriginalText,
+                    StatusColor = "ff4747",
+                    ProductName = "Компьютеры"
+                },
+                new UserProductsViewModel
+                {
+                    Initials = "CL",
+                    ProfilePictureRGB = "89ccb7",
+                    Status = "Inpprocessing",
+                    UserName = PersonalAreaVM.FullName.OriginalText,
+                    StatusColor = "0080ff",
+                    ProductName = "Телефоны"
+                },
+                new UserProductsViewModel
+                {
+                    Initials = "CL",
+                    ProfilePictureRGB = "89ccb7",
+                    Status = "Test",
+                    UserName = PersonalAreaVM.FullName.OriginalText,
+                    StatusColor = "0080ff",
+                    ProductName = "Носки"
+                },
+            };
+            InboxOrders = new ObservableCollection<UserProductsViewModel>
+            {
+                new UserProductsViewModel
+                {
+                    Initials = "CL",
+                    ProfilePictureRGB = "89ccb7",
+                    Status = "Test",
+                    UserName = PersonalAreaVM.FullName.OriginalText,
+                    StatusColor = "0080ff",
+                    ProductName = "Футболки"
+                },
+                new UserProductsViewModel
+                {
+                    Initials = "CL",
+                    ProfilePictureRGB = "89ccb7",
+                    Status = "Test",
+                    UserName = PersonalAreaVM.FullName.OriginalText,
+                    StatusColor = "0080ff",
+                    ProductName = "Доски"
+                },
+                new UserProductsViewModel
+                {
+                    Initials = "CL",
+                    ProfilePictureRGB = "89ccb7",
+                    Status = "Test",
+                    UserName = PersonalAreaVM.FullName.OriginalText,
+                    StatusColor = "0080ff",
+                    ProductName = "Холодильники"
+                },
+                new UserProductsViewModel
+                {
+                    Initials = "CL",
+                    ProfilePictureRGB = "89ccb7",
+                    Status = "Test",
+                    UserName = PersonalAreaVM.FullName.OriginalText,
+                    StatusColor = "0080ff",
+                    ProductName = "Кофты"
+                },
+            };
         }
 
         private void CloseAll()
         {
-            ShowPersonalArea = false;
+            PersonalAreaVM.ShowPersonalArea = false;
             ShowDoTheOrder = false;
             ShowOrders = false;
         }
@@ -89,11 +132,11 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
         }
         private void ShowPersonalAreaMethod()
         {
-            if (!ShowPersonalArea)
+            if (!PersonalAreaVM.ShowPersonalArea)
             { 
                 CloseAll();
+                PersonalAreaVM.ShowPersonalArea = true;
             }
-            ShowPersonalArea = true;
         }
     }
 }

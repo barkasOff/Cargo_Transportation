@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Cargo_Transportation.ViewModels.Input;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -34,6 +35,24 @@ namespace Cargo_Transportation.Controls.Input
                 Debugger.Break();
                 (d as PasswordEntryControl).LabelColumnDefinition.Width = GridLength.Auto;
             }
+        }
+
+        private void ConfirmPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is PasswordEntryViewModel viewModel)
+                viewModel.ConfirmPassword = ConfirmPassword.SecurePassword;
+        }
+
+        private void NewPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is PasswordEntryViewModel viewModel)
+                viewModel.NewPassword = NewPassword.SecurePassword;
+        }
+
+        private void CurrentPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is PasswordEntryViewModel viewModel)
+                viewModel.CurrentPassword = CurrentPassword.SecurePassword;
         }
     }
 }

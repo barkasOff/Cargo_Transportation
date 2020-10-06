@@ -216,7 +216,7 @@
                         Padding="{TemplateBinding Padding}"
                         VerticalAlignment="{TemplateBinding VerticalAlignment}"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="5">
+                        CornerRadius="10">
                         <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"

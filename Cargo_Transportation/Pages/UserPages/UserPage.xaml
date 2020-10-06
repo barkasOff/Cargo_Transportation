@@ -47,9 +47,9 @@
                     Style="{StaticResource UserPageChoiseButton}" />
             </Grid>
             <Grid Grid.Row="1">
-                <userpagecontrols:PersonalArea attachedProperties:AnimateFadeInProperty.Value="{Binding ShowPersonalArea, UpdateSourceTrigger=PropertyChanged}" />
-                <userpagecontrols:DoOrderControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowDoTheOrder, UpdateSourceTrigger=PropertyChanged}" />
-                <userpagecontrols:AllUserOrdersControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowOrders, UpdateSourceTrigger=PropertyChanged}" />
+                <userpagecontrols:PersonalArea attachedProperties:AnimateFadeInProperty.Value="{Binding ShowPersonalArea}" DataContext="{Binding PersonalAreaVM}" />
+                <userpagecontrols:DoOrderControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowDoTheOrder}" />
+                <userpagecontrols:AllUserOrdersControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowOrders}" />
             </Grid>
         </Grid>
     </Border>

@@ -1,4 +1,5 @@
-﻿using Cargo_Transportation.ViewModels;
+﻿using Cargo_Transportation.Interfaces;
+using Cargo_Transportation.ViewModels;
 using Cargo_Transportation.ViewModels.UserPageViewModels;
 using Ninject;
 
@@ -9,6 +10,7 @@ namespace Cargo_Transportation.DIHelpers
         public static IKernel Kernel { get; set; } = new StandardKernel();
         public static ApplicationViewModel Application => Get<ApplicationViewModel>();
         public static UserPageViewModels UserView => Get<UserPageViewModels>();
+        public static IUIManager UI => Get<IUIManager>();
 
         public static void Setup()
         {

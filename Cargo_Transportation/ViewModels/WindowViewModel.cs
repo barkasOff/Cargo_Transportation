@@ -19,8 +19,8 @@ namespace Cargo_Transportation.ViewModels
         private int _windowRadious = 0;
         private WindowDockPosition _windowDockPosition = WindowDockPosition.Undocked;
 
-        public double MinWidth { get; private set; } = 800;
-        public double MinHeight { get; private set; } = 600;
+        public double MinWidth { get; set; } = 800;
+        public double MinHeight { get; set; } = 600;
         public double Height { get; set; }
         public bool Borderless => (_window.WindowState == WindowState.Maximized || _windowDockPosition != WindowDockPosition.Undocked);
         public int ResizeBorder => Borderless ? 0 : 3;
@@ -37,7 +37,7 @@ namespace Cargo_Transportation.ViewModels
             set => _windowRadious = value;
         }
         public CornerRadius WindowCornerRadious => new CornerRadius(WindowRadious);
-        public int TitleHeight { get; private set; } = 15;
+        public int TitleHeight { get; set; } = 15;
         public GridLength TitleHeightGridLength => new GridLength(TitleHeight + ResizeBorder);
         public Thickness InnerContentPadding => _window.WindowState == WindowState.Maximized ? new Thickness(0) : new Thickness(0);
 

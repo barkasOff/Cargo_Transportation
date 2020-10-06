@@ -1,4 +1,6 @@
-﻿using Cargo_Transportation.DIHelpers;
+﻿using Cargo_Transportation.Dialog.Ioc;
+using Cargo_Transportation.DIHelpers;
+using Cargo_Transportation.Interfaces;
 using System.Windows;
 
 namespace Cargo_Transportation
@@ -21,6 +23,7 @@ namespace Cargo_Transportation
         private void ApplicationSetup()
         {
             IoC.Setup();
+            IoC.Kernel.Bind<IUIManager>().ToConstant(new UIManager());
         }
     }
 }

@@ -32,6 +32,7 @@
                 <input:TextEntryControl DataContext="{Binding PhoneNumber}" />
                 <input:TextEntryControl DataContext="{Binding Email}" />
                 <input:TextEntryControl DataContext="{Binding CompanyName}" />
+                <input:PasswordEntryControl DataContext="{Binding Password}" />
             </StackPanel>
         </Grid>
     </Border>
