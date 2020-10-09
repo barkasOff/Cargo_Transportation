@@ -1,0 +1,51 @@
+﻿<pages:BasePage
+    x:Class="Cargo_Transportation.Pages.DriverPages.DriverPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:attachedProperties="clr-namespace:Cargo_Transportation.AttachedProperties"
+    xmlns:controls="clr-namespace:Cargo_Transportation.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:driverPageControls="clr-namespace:Cargo_Transportation.Controls.DriverPageControls"
+    xmlns:local="clr-namespace:Cargo_Transportation.Pages.DriverPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Cargo_Transportation.Pages"
+    Title="DriverPage"
+    mc:Ignorable="d">
+
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    Command="{Binding ShowPersonalAreaCommand}"
+                    Content="Личный кабинет"
+                    Style="{StaticResource UserPageChoiseButton}" />
+                <Button
+                    Grid.Column="1"
+                    Command="{Binding ShowOrdersCommand}"
+                    Content="Просмотр заказов"
+                    Style="{StaticResource UserPageChoiseButton}" />
+                <Button
+                    Grid.Column="2"
+                    HorizontalAlignment="Right"
+                    Command="{Binding ExitCommand}"
+                    Content="Выйти"
+                    Style="{StaticResource UserPageChoiseButton}" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <driverPageControls:DriverPersonalAreaControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowDriverPersonalArea}" DataContext="{Binding DriverPAViewModel}" />
+                <controls:NewOrdersListControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowOrders}" />
+            </Grid>
+        </Grid>
+    </Border>
+
+</pages:BasePage>

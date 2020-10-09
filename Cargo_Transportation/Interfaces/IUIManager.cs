@@ -6,6 +6,8 @@ namespace Cargo_Transportation.Interfaces
     public interface IUIManager
     {
         Task ShowMessage(MessageBoxDialogViewModel viewModel);
-        Task YesNoShowMessage(MessageBoxDialogViewModel viewModel);
+        Task ShowOrderProcessing(MessageBoxDialogViewModel viewModel);
+        Task ShowOrderInformationAfterConfirmation(MessageBoxDialogViewModel viewModel);
+        Task ShowOrderToTheDriver(MessageBoxDialogViewModel viewModel);
     }
 }

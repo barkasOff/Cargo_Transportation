@@ -1,5 +1,4 @@
 ﻿using Cargo_Transportation.Models;
-using Cargo_Transportation.ViewModels.UserPageViewModels;
 
 namespace Cargo_Transportation.Dialog
 {

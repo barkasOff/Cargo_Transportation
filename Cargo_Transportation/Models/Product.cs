@@ -9,6 +9,7 @@ namespace Cargo_Transportation.Models
         Completed = 1,
         Inpprocessing = 2
     }
+    // TODO: bool Warning for glass etc.
     public class Product
     {
         public int Id { get; set; }

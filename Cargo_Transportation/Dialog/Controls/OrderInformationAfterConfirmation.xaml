@@ -1,0 +1,102 @@
+﻿<dialog:BaseDialogUserControl
+    x:Class="Cargo_Transportation.Dialog.Controls.OrderInformationAfterConfirmation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dialog="clr-namespace:Cargo_Transportation.Dialog"
+    xmlns:local="clr-namespace:Cargo_Transportation.Dialog.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Border Padding="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBlock
+                    Padding="10,0,10,3"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Text="Order information" />
+                <TextBlock
+                    Padding="15,0,10,3"
+                    HorizontalAlignment="Right"
+                    FontSize="24"
+                    FontStyle="Italic">
+                    <Run Text="№" />
+                    <Run Text="123" />
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        Grid.Row="0"
+                        Padding="10,0,10,3"
+                        FontSize="18"
+                        Text="Order information:" />
+                </Grid>
+                <Grid Grid.Column="1" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="5"
+                        FontSize="16"
+                        FontWeight="Medium"
+                        Text="The cost of order: " />
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="5"
+                        FontSize="16"
+                        FontWeight="Medium"
+                        Text="Car: " />
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="5"
+                        FontSize="16"
+                        FontWeight="Medium"
+                        Text="Driver: " />
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="5"
+                        FontSize="16"
+                        Text="15000" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="5"
+                        FontSize="16"
+                        Text="Car: " />
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="5"
+                        FontSize="16"
+                        Text="Driver: " />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+
+</dialog:BaseDialogUserControl>

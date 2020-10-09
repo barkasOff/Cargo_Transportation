@@ -1,0 +1,70 @@
+﻿<dialog:BaseDialogUserControl
+    x:Class="Cargo_Transportation.Controls.DispatcherPageControls.DispetcherOrderProcessing"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dialog="clr-namespace:Cargo_Transportation.Dialog"
+    xmlns:local="clr-namespace:Cargo_Transportation.Controls.DispatcherPageControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Border Padding="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Padding="10,0,10,3"
+                FontSize="24"
+                FontWeight="Bold"
+                Text="Order processing" />
+            <TextBlock
+                Grid.Row="1"
+                Padding="15,0,10,3"
+                FontSize="24"
+                FontStyle="Italic">
+                <Run Text="№" />
+                <Run Text="123" />
+            </TextBlock>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        Grid.Row="0"
+                        Padding="10,0,10,3"
+                        FontSize="18"
+                        Text="Order information:" />
+                </Grid>
+                <StackPanel
+                    Grid.Column="1"
+                    Margin="10"
+                    VerticalAlignment="Center">
+                    <TextBox
+                        Style="{StaticResource AuthorizationTB}"
+                        Tag="Price for 1 car"
+                        Text="{Binding PriceOneCar, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox
+                        Style="{StaticResource AuthorizationTB}"
+                        Tag="Number of cars"
+                        Text="{Binding NumberCars, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox
+                        Style="{StaticResource AuthorizationTB}"
+                        Tag="Cost of delivery"
+                        Text="{Binding DeliveryCost, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Content="Send" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+
+</dialog:BaseDialogUserControl>

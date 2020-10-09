@@ -71,6 +71,7 @@
                 <Button
                     Grid.Column="0"
                     HorizontalAlignment="Right"
+                    Command="{Binding Register}"
                     Content="Создать" />
                 <Button
                     Grid.Column="1"

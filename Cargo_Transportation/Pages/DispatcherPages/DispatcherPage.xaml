@@ -1,0 +1,105 @@
+﻿<pages:BasePage
+    x:Class="Cargo_Transportation.Pages.DispatcherPages.DispatcherPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:attachedProperties="clr-namespace:Cargo_Transportation.AttachedProperties"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dispatcherpagecontrols="clr-namespace:Cargo_Transportation.Controls.DispatcherPageControls"
+    xmlns:local="clr-namespace:Cargo_Transportation.Pages.DispatcherPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Cargo_Transportation.Pages"
+    xmlns:valueConverters="clr-namespace:Cargo_Transportation.ValueConverters"
+    Title="DispatcherPage"
+    mc:Ignorable="d">
+
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.ColumnSpan="2"
+                Width="25"
+                Height="25"
+                Margin="10"
+                Padding="7"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Panel.ZIndex="1"
+                attachedProperties:AnimateFadeInProperty.Value="{Binding ShowDispatcherSidebar, Converter={valueConverters:BooleanInvertConverter}}"
+                Command="{Binding ShowSideBarCommand}"
+                Content="☰"
+                Cursor="Hand" />
+            <Grid Grid.Column="0">
+                <dispatcherpagecontrols:DispatcherPersonalArea attachedProperties:AnimateFadeInProperty.Value="{Binding ShowDispatcherPersonalArea}" DataContext="{Binding DispatcherPAViewModel}" />
+                <dispatcherpagecontrols:AllNewOrdersControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowAllOrders}" />
+            </Grid>
+            <Border
+                Grid.Column="1"
+                Padding="20"
+                attachedProperties:AnimateSlideInFromRightProperty.Value="{Binding ShowDispatcherSidebar, Converter={valueConverters:BooleanInvertConverter}}"
+                BorderBrush="{StaticResource RedBrush}">
+                <TextBlock>
+                    Вашей задачей является:<LineBreak />
+                    1. Подтвердить все заказы<LineBreak />
+                    пользователей<LineBreak />
+                    2. Сделать комфортное расписание<LineBreak />
+                    поставок персоналу</TextBlock>
+            </Border>
+            <Border
+                Grid.Column="1"
+                Padding="30"
+                attachedProperties:AnimateSlideInFromRightProperty.Value="{Binding ShowDispatcherSidebar}"
+                Background="#a1bbd6"
+                BorderBrush="Black"
+                BorderThickness="0.3,0,0,0">
+                <Grid Margin="0,70,0,0" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button
+                        Grid.Row="0"
+                        Width="Auto"
+                        Margin="0,10"
+                        Command="{Binding AllNewOrdersCommand}"
+                        Content="Новые заказы"
+                        FontSize="16" />
+                    <Button
+                        Grid.Row="1"
+                        Width="Auto"
+                        Margin="0,10"
+                        Command="{Binding CurrentOrdersCommand}"
+                        Content="Текущие заказы"
+                        FontSize="16" />
+                    <Button
+                        Grid.Row="2"
+                        Width="Auto"
+                        Margin="0,10"
+                        Command="{Binding ConfirmOrdersCommand}"
+                        Content="Завершенные заказы"
+                        FontSize="16" />
+                    <Button
+                        Grid.Row="3"
+                        Width="Auto"
+                        Margin="0,10"
+                        Command="{Binding PersonalInfoCommand}"
+                        Content="Personal Info"
+                        FontSize="16" />
+                    <Button
+                        Grid.Row="4"
+                        Width="Auto"
+                        Margin="0,10"
+                        Command="{Binding ExitCommand}"
+                        Content="Exit"
+                        FontSize="16" />
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+
+</pages:BasePage>

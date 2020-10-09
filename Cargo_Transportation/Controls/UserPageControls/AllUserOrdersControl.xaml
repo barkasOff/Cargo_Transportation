@@ -25,7 +25,7 @@
                     FontWeight="Bold"
                     Text="Исходящие:"
                     TextDecorations="Underline" />
-                <helpcontrols:OrderListControl Grid.Row="1" />
+                <helpcontrols:InboxOrderListControl Grid.Row="1" />
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -38,7 +38,7 @@
                     FontWeight="Bold"
                     Text="Входящие:"
                     TextDecorations="Underline" />
-                <helpcontrols:InboxOrderListControl Grid.Row="1" />
+                <helpcontrols:OrderListControl Grid.Row="1" />
             </Grid>
         </Grid>
     </Border>

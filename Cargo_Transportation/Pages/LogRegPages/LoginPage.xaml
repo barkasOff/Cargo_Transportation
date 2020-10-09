@@ -50,6 +50,7 @@
                 <Button
                     Grid.Column="1"
                     Width="Auto"
+                    Command="{Binding Cancel}"
                     Content="Отмена" />
             </Grid>
             <Button

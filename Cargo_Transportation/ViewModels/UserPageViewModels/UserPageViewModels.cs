@@ -116,6 +116,8 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
         }
         private void ShowOrdersMethod()
         {
+            if (IoC.Application.OrderProcessingOrInformation != ShowVariablesOfDialog.ShowMessage)
+                IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.ShowMessage;
             if (!ShowOrders)
             {
                 CloseAll();
