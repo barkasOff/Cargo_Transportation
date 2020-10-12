@@ -1,6 +1,8 @@
-﻿using Cargo_Transportation.Dialog.Ioc;
+﻿using Cargo_Transportation.DBProvider;
+using Cargo_Transportation.Dialog.Ioc;
 using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Interfaces;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Cargo_Transportation
@@ -10,20 +12,22 @@ namespace Cargo_Transportation
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            ApplicationSetup();
+            await ApplicationSetup();
 
             Current.MainWindow = new MainWindow();
             Current.MainWindow.Show();
         }
 
-        private void ApplicationSetup()
+        private async Task ApplicationSetup()
         {
             IoC.Setup();
             IoC.Kernel.Bind<IUIManager>().ToConstant(new UIManager());
+
+            await Task.Run(() => WorkWithDB.Get_Users());
         }
     }
 }

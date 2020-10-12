@@ -5,11 +5,11 @@ namespace Cargo_Transportation.DBProvider
 {
     public class ApplicationDbContext : DbContext
     {
-        DbSet<Client> Clients { get; set; }
-        DbSet<Employee> Employees { get; set; }
-        DbSet<Car> Cars { get; set; }
-        DbSet<Product> Products { get; set; }
-        DbSet<Route> Routes { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Route> Routes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

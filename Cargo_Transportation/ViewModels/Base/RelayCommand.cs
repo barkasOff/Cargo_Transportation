@@ -15,4 +15,15 @@ namespace Cargo_Transportation.ViewModels.Base
 
         public void                 Execute(object parameter) => _action();
     }
+    public class RelayCommandParameter : ICommand
+    {
+        private Action<object> _action;
+
+        public event EventHandler CanExecuteChanged = (sender, e) => { };
+
+        public RelayCommandParameter(Action<object> action) => _action = action;
+
+        public bool CanExecute(object parameter) => true;
+        public void Execute(object parameter) => _action(parameter);
+    }
 }

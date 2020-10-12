@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Cargo_Transportation.Pages.LogRegPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:Cargo_Transportation.Pages"
+    x:Name="LPage"
     Title="LoginPage"
     mc:Ignorable="d">
 
@@ -31,9 +32,12 @@
             </Grid.RowDefinitions>
             <TextBox
                 Grid.Row="0"
+                MaxLength="20"
                 Style="{StaticResource AuthorizationTB}"
-                Tag="Enter your login:" />
+                Tag="Enter your login:"
+                Text="{Binding Login, Mode=TwoWay}" />
             <PasswordBox
+                x:Name="PasswordText"
                 Grid.Row="1"
                 Style="{StaticResource AuthorizationPB}"
                 Tag="Enter your password:" />
@@ -45,18 +49,19 @@
                 <Button
                     Grid.Column="0"
                     Width="Auto"
-                    Command="{Binding Login}"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding ElementName=LPage}"
                     Content="Войти" />
                 <Button
                     Grid.Column="1"
                     Width="Auto"
-                    Command="{Binding Cancel}"
+                    Command="{Binding CancelCommand}"
                     Content="Отмена" />
             </Grid>
             <Button
                 Grid.Row="3"
                 Margin="0,2"
-                Command="{Binding GOTORegisterPage}"
+                Command="{Binding GOTORegisterPageCommand}"
                 Content="Еще не зарегистрированы??"
                 Style="{StaticResource DescriptionButton}" />
         </Grid>
