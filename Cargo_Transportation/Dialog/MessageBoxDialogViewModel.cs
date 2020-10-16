@@ -6,8 +6,5 @@ namespace Cargo_Transportation.Dialog
     {
         public string Message { get; set; } = "Hello!";
         public string OkText { get; set; } = "OK";
-
-        public MessageBoxDialogViewModel(Product product) : base(product)
-        { }
     }
 }

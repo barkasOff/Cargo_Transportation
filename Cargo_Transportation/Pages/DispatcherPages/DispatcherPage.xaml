@@ -32,7 +32,7 @@
                 Content="☰"
                 Cursor="Hand" />
             <Grid Grid.Column="0">
-                <dispatcherpagecontrols:DispatcherPersonalArea attachedProperties:AnimateFadeInProperty.Value="{Binding ShowDispatcherPersonalArea}" DataContext="{Binding DispatcherPAViewModel}" />
+                <dispatcherpagecontrols:DispatcherPersonalArea attachedProperties:AnimateFadeInProperty.Value="{Binding ShowPersonalArea}" DataContext="{Binding EmployeePAViewModel}" />
                 <dispatcherpagecontrols:AllNewOrdersControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowAllOrders}" />
             </Grid>
             <Border

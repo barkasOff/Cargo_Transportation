@@ -27,7 +27,7 @@
                 FontSize="24"
                 FontStyle="Italic">
                 <Run Text="№" />
-                <Run Text="123" />
+                <Run Text="{Binding Id, FallbackValue=123}" />
             </TextBlock>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -52,16 +52,19 @@
                     <TextBox
                         Style="{StaticResource AuthorizationTB}"
                         Tag="Price for 1 car"
-                        Text="{Binding PriceOneCar, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding PriceOneCar, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox
                         Style="{StaticResource AuthorizationTB}"
                         Tag="Number of cars"
-                        Text="{Binding NumberCars, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding NumberCars, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox
                         Style="{StaticResource AuthorizationTB}"
                         Tag="Cost of delivery"
-                        Text="{Binding DeliveryCost, UpdateSourceTrigger=PropertyChanged}" />
-                    <Button Content="Send" />
+                        Text="{Binding DeliveryCost, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Command="{Binding SendCommand}" Content="Send" />
+                        <Button Command="{Binding CancelCommand}" Content="Cancel" />
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Grid>

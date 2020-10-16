@@ -48,7 +48,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <userpagecontrols:PersonalArea attachedProperties:AnimateFadeInProperty.Value="{Binding ShowPersonalArea}" DataContext="{Binding PersonalAreaVM}" />
-                <userpagecontrols:DoOrderControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowDoTheOrder}" />
+                <userpagecontrols:DoOrderControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowDoTheOrder}" DataContext="{Binding OrderViewModel}" />
                 <userpagecontrols:AllUserOrdersControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowOrders}" />
             </Grid>
         </Grid>

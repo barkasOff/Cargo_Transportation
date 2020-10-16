@@ -1,119 +1,103 @@
 ﻿using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Interfaces;
+using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels.Base;
 using Cargo_Transportation.ViewModels.UserPageViewModels;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.DispatcherViewModels
 {
-    public class DispatcherViewModels : BaseViewModel
+    public class                                            DispatcherViewModels : EmployeeViewModel
     {
-        public ObservableCollection<UserProductsViewModel> ConfirmOrders { get; set; }
-        public ObservableCollection<UserProductsViewModel> CurrentOrders { get; set; }
-        public ObservableCollection<UserProductsViewModel> NewOrders { get; set; }
-        public ObservableCollection<UserProductsViewModel> Orders { get; set; }
-        public DispatcherPAViewModel DispatcherPAViewModel { get; set; }
-        public bool ShowDispatcherSidebar { get; set; } = true;
-        public bool ShowAllOrders { get; set; }
-        public string OrderStatus { get; set; }
+        public ObservableCollection<UserProductsViewModel>  ConfirmOrders { get; set; }
+        public ObservableCollection<UserProductsViewModel>  CurrentOrders { get; set; }
+        public ObservableCollection<UserProductsViewModel>  NewOrders { get; set; }
+        public bool                                         ShowDispatcherSidebar { get; set; } = true;
+        public string                                       OrderStatus { get; set; }
 
-        public ICommand ShowSideBarCommand { get; set; }
-        public ICommand AllNewOrdersCommand { get; set; }
-        public ICommand CurrentOrdersCommand { get; set; }
-        public ICommand ConfirmOrdersCommand { get; set; }
-        public ICommand PersonalInfoCommand { get; set; }
-        public ICommand ExitCommand { get; set; }
+        public ICommand                                     ShowSideBarCommand { get; set; }
+        public ICommand                                     AllNewOrdersCommand { get; set; }
+        public ICommand                                     CurrentOrdersCommand { get; set; }
+        public ICommand                                     ConfirmOrdersCommand { get; set; }
+        public ICommand                                     PersonalInfoCommand { get; set; }
 
         public DispatcherViewModels()
         {
             ConfirmOrders = new ObservableCollection<UserProductsViewModel>();
-            for (int i = 0; i < 9; i++)
-            {
-                ConfirmOrders.Add(
-                new UserProductsViewModel
-                {
-                    Initials = "CL",
-                    ProfilePictureRGB = "89ccb7",
-                    Status = "Confirm",
-                    UserName = "Antosha",
-                    StatusColor = "00c541",
-                    ProductName = "Трусы"
-                });
-            }
             CurrentOrders = new ObservableCollection<UserProductsViewModel>();
-            for (int i = 0; i < 9; i++)
-            {
-                CurrentOrders.Add(
-                new UserProductsViewModel
-                {
-                    Initials = "CL",
-                    ProfilePictureRGB = "89ccb7",
-                    Status = "Awaiting delivery",
-                    UserName = "Antosha",
-                    StatusColor = "0080ff",
-                    ProductName = "Трусы"
-                });
-            }
             NewOrders = new ObservableCollection<UserProductsViewModel>();
-            for (int i = 0; i < 9; i++)
-            {
-                NewOrders.Add(
-                new UserProductsViewModel
-                {
-                    Initials = "CL",
-                    ProfilePictureRGB = "89ccb7",
-                    Status = "Pending processing",
-                    UserName = "Antosha",
-                    StatusColor = "ff4747",
-                    ProductName = "Трусы"
-                });
-            }
-            DispatcherPAViewModel = new DispatcherPAViewModel();
 
             ShowSideBarCommand = new RelayCommand(() => ShowDispatcherSidebar = true);
             AllNewOrdersCommand = new RelayCommand(AllNewOrdersMethod);
             CurrentOrdersCommand = new RelayCommand(CurrentOrdersMethod);
             ConfirmOrdersCommand = new RelayCommand(ConfirmOrdersMethod);
             PersonalInfoCommand = new RelayCommand(PersonalInfoMethod);
-            ExitCommand = new RelayCommand(() => IoC.Application.GoToPage(ApplicationPage.Login));
         }
 
-        private void PersonalInfoMethod()
+        private void                                        PersonalInfoMethod()
         {
-            if (IoC.Application.OrderProcessingOrInformation != ShowVariablesOfDialog.ShowOrderProcessing)
-                IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.ShowOrderProcessing;
             ShowDispatcherSidebar = true;
             ShowAllOrders = false;
-            DispatcherPAViewModel.ShowDispatcherPersonalArea = true;
+            EmployeePAViewModel.ShowPersonalArea = true;
         }
-        private void HideUnnecessaryInfo()
+        private void                                        HideUnnecessaryInfo()
         {
             ShowDispatcherSidebar = false;
             ShowAllOrders = true;
-            DispatcherPAViewModel.ShowDispatcherPersonalArea = false;
+            EmployeePAViewModel.ShowPersonalArea = false;
         }
-        private void ConfirmOrdersMethod()
+        private void                                        ConfirmOrdersMethod()
         {
-            if (IoC.Application.OrderProcessingOrInformation != ShowVariablesOfDialog.ShowOrderInformationAfterConfirmation)
-                IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.ShowOrderInformationAfterConfirmation;
             OrderStatus = "Confirm Orders";
             Orders = ConfirmOrders;
             HideUnnecessaryInfo();
         }
-        private void CurrentOrdersMethod()
+        private void                                        CurrentOrdersMethod()
         {
             OrderStatus = "Current Orders";
             Orders = CurrentOrders;
             HideUnnecessaryInfo();
         }
-        private void AllNewOrdersMethod()
+        private void                                        AllNewOrdersMethod()
         {
-            if (IoC.Application.OrderProcessingOrInformation != ShowVariablesOfDialog.ShowOrderProcessing)
-                IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.ShowOrderProcessing;
             OrderStatus = "Processing Orders";
             Orders = NewOrders;
             HideUnnecessaryInfo();
+        }
+        private UserProductsViewModel                       Make_UserProductsViewModel(Product product)
+        {
+            string login = "";
+            foreach (var el in IoC.Application_Work.All_Users)
+                if (el is Client client && client?.Products.FirstOrDefault(u => u.Id == product.Id) != null)
+                        login = el.Login;
+            return (new UserProductsViewModel
+            {
+                Initials = "CL",
+                ProfilePictureRGB = "89ccb7",
+                Status = product.Status == StatusOfProduct.Completed ? "Confirm" : product.Status == StatusOfProduct.Current ? "Current" : "Inprocessing",
+                UserName = login,
+                StatusColor = product.Status == StatusOfProduct.Completed ? "00c541" : product.Status == StatusOfProduct.Current ? "ff4747" : "0080ff",
+                ProductName = product.Name
+            });
+        }
+        public async void                                   Set_Orders_Async()
+        {
+            foreach (var order in IoC.Application_Work.All_Orders)
+            {
+                if (order.Status == StatusOfProduct.Inpprocessing)
+                    await Task.Run(() => NewOrders.Add(Make_UserProductsViewModel(order)));
+                else if (order.Status == StatusOfProduct.Current)
+                    await Task.Run(() => CurrentOrders.Add(Make_UserProductsViewModel(order)));
+                else if (order.Status == StatusOfProduct.Completed)
+                    await Task.Run(() => ConfirmOrders.Add(Make_UserProductsViewModel(order)));
+            }
+        }
+        public void                                         Add_New_Order(UserProductsViewModel userProductsViewModel)
+        {
+            NewOrders.Add(userProductsViewModel);
         }
     }
 }

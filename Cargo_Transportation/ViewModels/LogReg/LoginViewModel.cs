@@ -32,16 +32,24 @@ namespace Cargo_Transportation.ViewModels.LogReg
             switch (LoginRegisterCheck.Which_User(Login, password))
             {
                 case AplicationUser.User:
+                    IoC.UserView.PersonalAreaVM.Update_User_PA();
                     IoC.Application.GoToPage(ApplicationPage.UserPage);
+                    IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.ShowMessage;
+                    IoC.UserView.Set_Orders_Async();
                     break;
                 case AplicationUser.Dispatcher:
+                    IoC.DispatcherView.EmployeePAViewModel.Update_Personal_Area();
                     IoC.Application.GoToPage(ApplicationPage.DispatcherPage);
+                    IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.ShowOrderProcessing;
+                    IoC.DispatcherView.Set_Orders_Async();
                     break;
                 case AplicationUser.Driver:
+                    IoC.DriverView.EmployeePAViewModel.Update_Personal_Area();
                     IoC.Application.GoToPage(ApplicationPage.Driver);
+                    IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.OrderToTheDriver;
                     break;
                 default:
-                    await IoC.UI.ShowMessage(new MessageBoxDialogViewModel(new Product(StatusOfProduct.Completed)) { Title = "Who are you?" });
+                    await IoC.UI.ShowMessage(new MessageBoxDialogViewModel() { Title = "Who are you?" });
                     break;
             }
         }

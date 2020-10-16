@@ -42,8 +42,8 @@
                     Style="{StaticResource UserPageChoiseButton}" />
             </Grid>
             <Grid Grid.Row="1">
-                <driverPageControls:DriverPersonalAreaControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowDriverPersonalArea}" DataContext="{Binding DriverPAViewModel}" />
-                <controls:NewOrdersListControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowOrders}" />
+                <driverPageControls:DriverPersonalAreaControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowPersonalArea}" DataContext="{Binding EmployeePAViewModel}" />
+                <controls:NewOrdersListControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowAllOrders}" />
             </Grid>
         </Grid>
     </Border>

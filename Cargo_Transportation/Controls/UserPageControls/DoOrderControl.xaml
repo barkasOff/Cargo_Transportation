@@ -46,7 +46,7 @@
                 <TextBlock
                     Grid.Row="2"
                     Style="{StaticResource UserChoise}"
-                    Text="Исходящий/Входящий" />
+                    Text="Исходящий/Входящий (И / В)" />
                 <TextBlock
                     Grid.Row="3"
                     Style="{StaticResource UserChoise}"
@@ -64,41 +64,48 @@
                     Grid.Column="1"
                     MaxLength="50"
                     Style="{StaticResource EnterOrderParameter}"
-                    Tag="Наименование товара" />
+                    Tag="Наименование товара"
+                    Text="{Binding OrderName, Mode=TwoWay}" />
                 <TextBox
                     Grid.Row="1"
                     Grid.Column="1"
                     MaxLength="4"
                     Style="{StaticResource EnterOrderParameter}"
-                    Tag="Вес товара" />
+                    Tag="Вес товара"
+                    Text="{Binding OrderWeight, Mode=TwoWay}" />
                 <TextBox
                     Grid.Row="2"
                     Grid.Column="1"
-                    MaxLength="7"
+                    MaxLength="1"
                     Style="{StaticResource EnterOrderParameter}"
-                    Tag="Исходящий/Входящий" />
+                    Tag="Исходящий/Входящий"
+                    Text="{Binding InputOrOutput, Mode=TwoWay}" />
                 <TextBox
                     Grid.Row="3"
                     Grid.Column="1"
                     MaxLength="50"
                     Style="{StaticResource EnterOrderParameter}"
-                    Tag="Откуда забрать товар" />
+                    Tag="Откуда забрать товар"
+                    Text="{Binding OrderFrom, Mode=TwoWay}" />
                 <TextBox
                     Grid.Row="4"
                     Grid.Column="1"
                     MaxLength="50"
                     Style="{StaticResource EnterOrderParameter}"
-                    Tag="Куда доставить товар" />
+                    Tag="Куда доставить товар"
+                    Text="{Binding OrderTo, Mode=TwoWay}" />
                 <DatePicker
                     Grid.Row="5"
                     Grid.Column="1"
                     BorderThickness="0"
+                    SelectedDate="{Binding DeliveryDate, Mode=TwoWay}"
                     Tag="Желаемая дата доставки" />
                 <Button
                     Grid.Row="6"
                     Grid.Column="1"
                     Padding="5"
                     HorizontalAlignment="Right"
+                    Command="{Binding CreateNewOrderCommand}"
                     Content="Заказать" />
             </Grid>
         </Grid>

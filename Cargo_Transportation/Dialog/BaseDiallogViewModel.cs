@@ -1,12 +1,10 @@
 ﻿using Cargo_Transportation.Models;
-using Cargo_Transportation.ViewModels.UserPageViewModels;
+using Cargo_Transportation.ViewModels.Base;
 
 namespace Cargo_Transportation.Dialog
 {
-    public class BaseDiallogViewModel : ProductViewModel
+    public class BaseDiallogViewModel : BaseViewModel
     {
         public string Title { get; set; }
-        public BaseDiallogViewModel(Product product) : base(product)
-        { }
     }
 }

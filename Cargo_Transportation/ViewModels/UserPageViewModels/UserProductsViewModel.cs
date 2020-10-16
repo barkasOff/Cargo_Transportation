@@ -1,7 +1,6 @@
 ﻿using Cargo_Transportation.Dialog;
 using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Interfaces;
-using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels.Base;
 using System.Windows.Input;
 
@@ -27,28 +26,28 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
         {
             if (IoC.Application.OrderProcessingOrInformation == ShowVariablesOfDialog.ShowOrderProcessing)
             {
-                IoC.UI.ShowOrderProcessing(new MessageBoxDialogViewModel(new Product(StatusOfProduct.Current))
+                IoC.UI.ShowOrderProcessing(new MessageBoxDialogViewModel()
                 {
                     Title = "Order Processing",
                 });
             }
             else if (IoC.Application.OrderProcessingOrInformation == ShowVariablesOfDialog.ShowOrderInformationAfterConfirmation)
             {
-                IoC.UI.ShowOrderInformationAfterConfirmation(new MessageBoxDialogViewModel(new Product(StatusOfProduct.Current))
+                IoC.UI.ShowOrderInformationAfterConfirmation(new MessageBoxDialogViewModel()
                 {
                     Title = "Accepted Order Information",
                 });
             }
             else if (IoC.Application.OrderProcessingOrInformation == ShowVariablesOfDialog.ShowMessage)
             {
-                IoC.UI.ShowMessage(new MessageBoxDialogViewModel(new Product(StatusOfProduct.Current))
+                IoC.UI.ShowMessage(new MessageBoxDialogViewModel()
                 {
                     Title = "Order Information",
                 });
             }
             else if (IoC.Application.OrderProcessingOrInformation == ShowVariablesOfDialog.OrderToTheDriver)
             {
-                IoC.UI.ShowOrderToTheDriver(new MessageBoxDialogViewModel(new Product(StatusOfProduct.Current))
+                IoC.UI.ShowOrderToTheDriver(new MessageBoxDialogViewModel()
                 {
                     Title = "Order to the driver",
                 });
