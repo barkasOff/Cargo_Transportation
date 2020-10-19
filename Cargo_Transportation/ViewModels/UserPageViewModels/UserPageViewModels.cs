@@ -70,7 +70,12 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
         }
         private UserProductsViewModel                           Make_UserProductsViewModel(Product product)
         {
+            Employee driver = null;
             var route = IoC.Application_Work.All_Routes.FirstOrDefault(r => r.Product?.Id == product.Id);
+            var car = IoC.Application_Work.All_Cars.FirstOrDefault(r => r.Routes.FirstOrDefault(rot => rot.Id == route?.Id)?.Id == route?.Id);
+            foreach (var u in IoC.Application_Work.All_Users)
+                if (u is Employee dr && dr.CarId == product.Route.CarId)
+                    driver = dr;
             return (new UserProductsViewModel
             {
                 Initials = "CL",
@@ -82,11 +87,16 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
                 Product = product,
                 OrderDialogViewModel = new OrderDialogViewModel
                 {
-                    OrderName = product.Name,
-                    OrderWeight = product.ProductWeight.ToString(),
-                    From = route != null ? route.From : "Test",
-                    To = route != null ? route.To : "Test",
-                    DeliveryDate = route != null ? DateTime.Parse(route.DepartureDate.ToString()).ToShortDateString() : "Test",
+                    OrderName = product.Name ?? "Empty",
+                    OrderWeight = product.ProductWeight.ToString() ?? "Empty",
+                    From = route != null ? route.From : "Empty",
+                    To = route != null ? route.To : "Empty",
+                    DeliveryDate = route != null ? DateTime.Parse(route.DepartureDate.ToString()).ToShortDateString() : "Empty",
+                    CarBrand = driver?.Car?.CarBrand ?? "Empty",
+                    CarNumber = driver?.Car?.CarNumber ?? "Empty",
+                    DispetcherName = driver?.Car?.CarBrand ?? "Empty",
+                    DriverName = driver?.FullName ?? "Empty",
+                    AdoptionDate = driver?.Car?.Routes.FirstOrDefault(rot => rot?.Id == route?.Id).ArrivalDate.ToShortDateString() ?? "Empty",
                 },
                 ShowVariablesOfDialog = StringCheck.Convert_Order_Status_To_Dialog(product.Status),
             });

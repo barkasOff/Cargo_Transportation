@@ -1,6 +1,7 @@
 ﻿using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,12 +13,11 @@ namespace Cargo_Transportation.DBProvider
         {
             using var context = new ApplicationDbContext();
             var clients = context.Clients.Include(o => o.Products).ToList();
-            var employees = context.Employees.ToList();
-            var cars = context.Cars.Include(c => c.CurrentRoute)
-                                                        .Include(c => c.CurrentDriver)
-                                                        .Include(c => c.Drivers)
-                                                        .Include(c => c.Routes).ToList();
-            var routes = context.Routes.Include(r => r.Product).ToList();
+            var employees = context.Employees.Include(e => e.Car).ToList();
+            var cars = context.Cars.Include(c => c.Drivers)
+                                   .Include(c => c.Routes).ToList();
+            var routes = context.Routes.Include(r => r.Product)
+                                       .Include(r => r.Car).ToList();
             var products = context.Products.ToList();
 
             foreach (var client in clients)
@@ -86,14 +86,25 @@ namespace Cargo_Transportation.DBProvider
         }
         public static async void            Update_Car_Async(Car car, Route route)
         {
-            IoC.Application_Work.All_Cars.First(c => c.Id == car.Id).CurrentRoute = route;
+            IoC.Application_Work.All_Routes.First(r => r.Id == route.Id).Car = car;
             IoC.Application_Work.All_Cars.First(c => c.Id == car.Id).Routes.Add(route);
             using var context = new ApplicationDbContext();
             var dbCar = context.Cars.First(c => c.Id == car.Id);
-            dbCar.CurrentRoute = route;
             dbCar.Routes.Add(route);
             await Task.Run(() => context.Cars.Update(dbCar));
             await context.SaveChangesAsync();
+        }
+        public static void                  Remove_Car_Route(Car car)
+        {
+            IoC.Application_Work.All_Routes.First(c => c.CarId == car.Id).Car = null;
+            IoC.Application_Work.All_Routes.First(c => c.CarId == car.Id).CarId = null;
+            using var context = new ApplicationDbContext();
+            var routes = context.Routes.ToList();
+            var dbRoute = routes.First(c => c.CarId == car.Id);
+            dbRoute.Car = null;
+            dbRoute.CarId = null;
+            context.Routes.Update(dbRoute);
+            context.SaveChanges();
         }
     }
 }

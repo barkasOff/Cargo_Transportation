@@ -43,15 +43,23 @@ namespace Cargo_Transportation.Dialog
 
         private CarViewModel                        Create_CarViewModel(Car car)
         {
+            Employee driver = null;
+            Route route = null;
+            foreach (var us in IoC.Application_Work.All_Users)
+                if (us is Employee dr && dr?.CarId == car.Id)
+                    driver = dr;
+            foreach (var rot in IoC.Application_Work.All_Routes)
+                if (rot.CarId == car.Id)
+                    route = rot;
             return (new CarViewModel() 
             {
                 CarProfilePictureRGB = "ff4",
-                CarInitials = car.CarBrand[0].ToString(),
-                CarBrand = car.CarBrand,
-                CarDriver = car.CurrentDriver.FullName,
-                CarStatus = car.CurrentRoute != null ? "Busy" : "Free",
+                CarInitials = car?.CarBrand[0].ToString(),
+                CarBrand = car?.CarBrand,
+                CarDriver = driver?.FullName,
+                CarStatus = route != null ? "Busy" : "Free",
                 CarLiftingCapacity = car.LiftingCapacity.ToString(),
-                StatusColor = car.CurrentRoute != null ? "ff4747" : "00c541",
+                StatusColor = route != null ? "ff4747" : "00c541",
                 Product = this.Product,
                 Car = car
             });

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cargo_Transportation.Models
 {
-    public enum StatusOfProduct
+    public enum                 StatusOfProduct
     {
         Current = 0,
         Completed = 1,
@@ -13,20 +13,22 @@ namespace Cargo_Transportation.Models
         HoldDispetcherToDriverAccept = 5,
         HoldDriverAccept = 6
     }
-    // TODO: bool Warning for glass etc.
-    public class Product
+    public class                Product
     {
-        public int Id { get; set; }
+        public int              Id { get; set; }
         [Required]
         [MaxLength(50)]
-        public string Name { get; set; }
+        public string           Name { get; set; }
         [Required]
         [Column(TypeName = "smallint")]
-        public int ProductWeight { get; set; }
+        public int              ProductWeight { get; set; }
         [Required]
-        public StatusOfProduct Status { get; set; }
+        public StatusOfProduct  Status { get; set; }
         [Required]
-        public bool OutgoingIncoming { get; set; }
+        public bool             OutgoingIncoming { get; set; }
+        public bool             WarningDangerous { get; set; }
+        public int?             RouteId { get; set; }
+        public Route            Route { get; set; }
 
         public Product(StatusOfProduct status)
         {

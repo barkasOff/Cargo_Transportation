@@ -31,7 +31,8 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
 
         private void                                ShowMessageMethod()
         {
-            if (Product.Status == StatusOfProduct.Completed ||
+            if (Product.Status == StatusOfProduct.Completed || 
+                Product.Status == StatusOfProduct.Current ||
                 Product.Status == StatusOfProduct.HoldDriverAccept ||
                 (Product.Status == StatusOfProduct.HoldDispetcherToDriverAccept && IoC.Application_Work.Current_User is Client))
                 IoC.UI.ShowMessage(new DialogWithOrderInfoViewModel()

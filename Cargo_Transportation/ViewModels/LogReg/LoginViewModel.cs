@@ -45,6 +45,7 @@ namespace Cargo_Transportation.ViewModels.LogReg
                     IoC.DriverView.EmployeePAViewModel.Update_Personal_Area();
                     IoC.Application.GoToPage(ApplicationPage.Driver);
                     IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.OrderToTheDriver;
+                    IoC.DriverView.Assigned_Order();
                     break;
                 default:
                     await IoC.UI.CommunicationDialog(new MessageBoxDialogViewModel() { Title = "Error", Message = "Who are you?" });

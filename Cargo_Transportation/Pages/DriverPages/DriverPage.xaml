@@ -32,7 +32,7 @@
                 <Button
                     Grid.Column="1"
                     Command="{Binding ShowOrdersCommand}"
-                    Content="Просмотр заказов"
+                    Content="Назначенный заказ"
                     Style="{StaticResource UserPageChoiseButton}" />
                 <Button
                     Grid.Column="2"
@@ -43,7 +43,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <driverPageControls:DriverPersonalAreaControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowPersonalArea}" DataContext="{Binding EmployeePAViewModel}" />
-                <controls:NewOrdersListControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowAllOrders}" />
+                <controls:DriverOrderControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowAssignedOrder}" />
             </Grid>
         </Grid>
     </Border>
