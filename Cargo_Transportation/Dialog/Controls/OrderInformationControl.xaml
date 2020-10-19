@@ -1,0 +1,28 @@
+﻿<dialog:BaseDialogUserControl
+    x:Class="Cargo_Transportation.Dialog.Controls.OrderInformationControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dialog="clr-namespace:Cargo_Transportation.Dialog"
+    xmlns:local="clr-namespace:Cargo_Transportation.Dialog.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:order="clr-namespace:Cargo_Transportation.Controls.Order"
+    mc:Ignorable="d">
+
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <order:OrderInfromation Grid.Column="0" DataContext="{Binding OrderDialogViewModel}" />
+            <Border
+                Grid.Column="1"
+                Width="0.5"
+                Background="Black" />
+            <order:EmployeeOrderInformation Grid.Column="2" DataContext="{Binding OrderDialogViewModel}" />
+        </Grid>
+    </Border>
+
+</dialog:BaseDialogUserControl>

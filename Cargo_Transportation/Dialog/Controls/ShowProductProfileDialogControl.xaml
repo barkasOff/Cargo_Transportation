@@ -6,24 +6,30 @@
     xmlns:dialog="clr-namespace:Cargo_Transportation.Dialog"
     xmlns:local="clr-namespace:Cargo_Transportation.Dialog.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:order="clr-namespace:Cargo_Transportation.Controls.Order"
     mc:Ignorable="d">
 
     <Border Padding="10">
-        <StackPanel Background="Transparent">
-            <TextBlock
-                Padding="5"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="18"
-                Text="{Binding Name, FallbackValue=Test}" />
-            <Button
-                Width="100"
-                Height="Auto"
-                Margin="5"
-                Padding="5"
-                Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dialog:BaseDialogUserControl}}}"
-                Content="{Binding Status, FallbackValue=Error}"
-                FontSize="18" />
+        <StackPanel HorizontalAlignment="Center" Background="Transparent">
+            <order:OrderInfromation HorizontalAlignment="Center" DataContext="{Binding OrderDialogViewModel}" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    Height="Auto"
+                    Margin="5"
+                    Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dialog:BaseDialogUserControl}}}"
+                    Content="OK" />
+                <Button
+                    Grid.Column="1"
+                    Height="Auto"
+                    Margin="5"
+                    Command="{Binding RefuseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dialog:BaseDialogUserControl}}}"
+                    Content="Refuse" />
+            </Grid>
         </StackPanel>
     </Border>
 

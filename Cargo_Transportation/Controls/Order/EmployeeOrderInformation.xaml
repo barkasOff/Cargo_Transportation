@@ -1,0 +1,57 @@
+﻿<UserControl
+    x:Class="Cargo_Transportation.Controls.Order.EmployeeOrderInformation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Cargo_Transportation.Controls.Order"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Border Padding="3">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Margin="5"
+                FontSize="16">
+                <Run FontWeight="Bold" Text="Dispetcher name:" />
+                <Run Text="{Binding DispetcherName, FallbackValue=Empty}" />
+            </TextBlock>
+            <TextBlock
+                Grid.Row="1"
+                Margin="5"
+                FontSize="16">
+                <Run FontWeight="Bold" Text="Driver name:" />
+                <Run Text="{Binding DriverName, FallbackValue=Empty}" />
+            </TextBlock>
+            <TextBlock
+                Grid.Row="2"
+                Margin="5"
+                FontSize="16">
+                <Run FontWeight="Bold" Text="Car brand:" />
+                <Run Text="{Binding CarBrand, FallbackValue=Empty}" />
+            </TextBlock>
+            <TextBlock
+                Grid.Row="3"
+                Margin="5"
+                FontSize="16">
+                <Run FontWeight="Bold" Text="Car number:" />
+                <Run Text="{Binding CarNumber, FallbackValue=Empty}" />
+            </TextBlock>
+            <TextBlock
+                Grid.Row="4"
+                Margin="5"
+                FontSize="16">
+                <Run FontWeight="Bold" Text="Delivery Date:" />
+                <Run Text="{Binding DriverDeliveryDate, FallbackValue=Empty}" />
+            </TextBlock>
+        </Grid>
+    </Border>
+
+</UserControl>

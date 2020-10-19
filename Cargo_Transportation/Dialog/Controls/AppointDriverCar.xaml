@@ -1,0 +1,76 @@
+﻿<dialog:BaseDialogUserControl
+    x:Class="Cargo_Transportation.Dialog.Controls.AppointDriverCar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:car="clr-namespace:Cargo_Transportation.Controls.Car"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dialog="clr-namespace:Cargo_Transportation.Dialog"
+    xmlns:local="clr-namespace:Cargo_Transportation.Dialog.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:order="clr-namespace:Cargo_Transportation.Controls.Order"
+    mc:Ignorable="d">
+
+    <Border Padding="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Padding="10,0,10,3"
+                FontSize="24"
+                FontWeight="Bold"
+                Text="Orginize the order" />
+            <TextBlock
+                Grid.Row="1"
+                Padding="15,0,10,3"
+                FontSize="24"
+                FontStyle="Italic">
+                <Run Text="№" />
+                <Run Text="{Binding Id, FallbackValue=123}" />
+            </TextBlock>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <order:OrderInfromation Grid.Column="0" DataContext="{Binding OrderDialogViewModel}" />
+                <Border
+                    Grid.Column="1"
+                    Width="0.5"
+                    Background="Black" />
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="10,0,10,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Margin="3"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Text="Choose the car:"
+                            TextDecorations="Underline" />
+                        <car:CarListControl Grid.Row="1" MaxHeight="140" />
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Button
+                Grid.Row="3"
+                Margin="3"
+                Command="{Binding AppointCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type dialog:BaseDialogUserControl}}}"
+                Content="Appoint" />
+        </Grid>
+    </Border>
+
+</dialog:BaseDialogUserControl>

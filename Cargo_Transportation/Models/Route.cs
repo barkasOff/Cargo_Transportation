@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Cargo_Transportation.Models
 {
+    // TODO: delivery cast
     public class Route
     {
         public int Id { get; set; }

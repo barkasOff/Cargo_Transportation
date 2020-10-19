@@ -1,0 +1,57 @@
+﻿<UserControl
+    x:Class="Cargo_Transportation.Controls.Order.OrderInfromation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Cargo_Transportation.Controls.Order"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Border Padding="3">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Margin="5"
+                FontSize="16">
+                <Run FontWeight="Bold" Text="Order name:" />
+                <Run Text="{Binding OrderName, FallbackValue=TEST}" />
+            </TextBlock>
+            <TextBlock
+                Grid.Row="1"
+                Margin="5"
+                FontSize="16">
+                <Run FontWeight="Bold" Text="Order weight:" />
+                <Run Text="{Binding OrderWeight, FallbackValue=TEST}" />
+            </TextBlock>
+            <TextBlock
+                Grid.Row="2"
+                Margin="5"
+                FontSize="16">
+                <Run FontWeight="Bold" Text="From:" />
+                <Run Text="{Binding From, FallbackValue=TEST}" />
+            </TextBlock>
+            <TextBlock
+                Grid.Row="3"
+                Margin="5"
+                FontSize="16">
+                <Run FontWeight="Bold" Text="To:" />
+                <Run Text="{Binding To, FallbackValue=TEST}" />
+            </TextBlock>
+            <TextBlock
+                Grid.Row="4"
+                Margin="5"
+                FontSize="16">
+                <Run FontWeight="Bold" Text="Delivery Date:" />
+                <Run Text="{Binding DeliveryDate, FallbackValue=TEST}" />
+            </TextBlock>
+        </Grid>
+    </Border>
+
+</UserControl>

@@ -7,7 +7,11 @@ namespace Cargo_Transportation.Models
     {
         Current = 0,
         Completed = 1,
-        Inpprocessing = 2
+        Inpprocessing = 2,
+        DispetcherInpprocessing = 3,
+        HoldUserAccept = 4,
+        HoldDispetcherToDriverAccept = 5,
+        HoldDriverAccept = 6
     }
     // TODO: bool Warning for glass etc.
     public class Product

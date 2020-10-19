@@ -1,4 +1,5 @@
-﻿using Cargo_Transportation.DBProvider;
+﻿using Cargo_Transportation.Check;
+using Cargo_Transportation.DBProvider;
 using Cargo_Transportation.Dialog;
 using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Models;
@@ -39,23 +40,29 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
         {
             Name = OrderName,
             OutgoingIncoming = InputOrOutput == "И" ? true : false,
-            ProductWeight = int.Parse(OrderWeight),
+            ProductWeight = int.Parse(OrderWeight),            
+        };
+        private Route           Create_New_Route(Product product) => new Route(DeliveryDate, DateTime.Now)
+        {
+            From = OrderFrom,
+            To = OrderTo,
+            Product = product,
         };
         private async void      CreateNewOrderMethodAsync()
         {
             if (!Check_Input_Data())
             {
-                await IoC.UI.ShowMessage(new MessageBoxDialogViewModel() { Title = "Error" });
+                await IoC.UI.CommunicationDialog(new MessageBoxDialogViewModel() { Title = "Error", Message = "Uncorrect input data!!" });
                 return;
             }
             var product = Create_New_Order();
-            WorkWithDB.Set_Product_Async(product);
+            WorkWithDB.Set_Routes_Async(Create_New_Route(product));
             // TODO: Add to db
             var userPVM = new UserProductsViewModel
             {
                 Initials = "CL",
                 ProfilePictureRGB = "89ccb7",
-                Status = product.Status == StatusOfProduct.Completed ? "Confirm" : product.Status == StatusOfProduct.Current ? "Current" : "Inprocessing",
+                Status = StringCheck.Convert_Order_Status(product.Status),
                 UserName = (IoC.Application_Work.Current_User as Client).Login,
                 StatusColor = product.Status == StatusOfProduct.Completed ? "00c541" : product.Status == StatusOfProduct.Current ? "ff4747" : "0080ff",
                 ProductName = product.Name
@@ -66,6 +73,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
                 IoC.UserView.OutboxOrders.Add(userPVM);
             IoC.DispatcherView.Add_New_Order(userPVM);
             Clear_Data();
+            IoC.UserView.Set_Orders();
         }
         private void            Clear_Data()
         {

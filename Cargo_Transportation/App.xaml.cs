@@ -3,7 +3,6 @@ using Cargo_Transportation.Dialog.Ioc;
 using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Interfaces;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Cargo_Transportation
@@ -18,7 +17,7 @@ namespace Cargo_Transportation
             base.OnStartup(e);
 
             ApplicationSetup();
-            (new Thread(new ThreadStart(Db_Work))).Start();
+            (new Thread(Db_Work)).Start();
 
             Current.MainWindow = new MainWindow();
             Current.MainWindow.Show();
@@ -31,10 +30,7 @@ namespace Cargo_Transportation
         }
         private void                Db_Work()
         {
-            WorkWithDB.Get_Users();
-            WorkWithDB.Get_Products();
-            WorkWithDB.Get_Cars();
-            WorkWithDB.Get_Routes();
+            WorkWithDB.Get_Data();
         }
     }
 }

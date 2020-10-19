@@ -1,11 +1,13 @@
-﻿using Cargo_Transportation.DIHelpers;
-using Cargo_Transportation.Interfaces;
+﻿using Cargo_Transportation.Check;
+using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels.Base;
+using Cargo_Transportation.ViewModels.DriverViewModels;
+using Cargo_Transportation.ViewModels.Order;
 using Cargo_Transportation.ViewModels.UserPageViewModels;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.DispatcherViewModels
@@ -73,27 +75,48 @@ namespace Cargo_Transportation.ViewModels.DispatcherViewModels
             foreach (var el in IoC.Application_Work.All_Users)
                 if (el is Client client && client?.Products.FirstOrDefault(u => u.Id == product.Id) != null)
                         login = el.Login;
+            var route = IoC.Application_Work.All_Routes.FirstOrDefault(r => r.Product?.Id == product.Id);
             return (new UserProductsViewModel
             {
                 Initials = "CL",
                 ProfilePictureRGB = "89ccb7",
-                Status = product.Status == StatusOfProduct.Completed ? "Confirm" : product.Status == StatusOfProduct.Current ? "Current" : "Inprocessing",
+                Status = StringCheck.Convert_Order_Status(product.Status == StatusOfProduct.Inpprocessing ? StatusOfProduct.DispetcherInpprocessing : product.Status),
                 UserName = login,
                 StatusColor = product.Status == StatusOfProduct.Completed ? "00c541" : product.Status == StatusOfProduct.Current ? "ff4747" : "0080ff",
-                ProductName = product.Name
+                ProductName = product.Name,
+                Product = product,
+                OrderDialogViewModel = new OrderDialogViewModel
+                {
+                    OrderName = product.Name,
+                    OrderWeight = product.ProductWeight.ToString(),
+                    From = route != null ? route.From : "Test",
+                    To = route != null ? route.To : "Test",
+                    DeliveryDate = route != null ? DateTime.Parse(route.DepartureDate.ToString()).ToShortDateString() : "Test",
+                },
+                ShowVariablesOfDialog = StringCheck.Convert_Order_Status_To_Dialog(product.Status == StatusOfProduct.Inpprocessing ? StatusOfProduct.DispetcherInpprocessing : product.Status),
             });
         }
-        public async void                                   Set_Orders_Async()
+        public void                                         Set_Orders()
         {
+            NewOrders.Clear();
+            ConfirmOrders.Clear();
+            CurrentOrders.Clear();
             foreach (var order in IoC.Application_Work.All_Orders)
             {
-                if (order.Status == StatusOfProduct.Inpprocessing)
-                    await Task.Run(() => NewOrders.Add(Make_UserProductsViewModel(order)));
+                if (order.Status == StatusOfProduct.Inpprocessing || order.Status == StatusOfProduct.HoldDispetcherToDriverAccept)
+                    NewOrders.Add(Make_UserProductsViewModel(order));
                 else if (order.Status == StatusOfProduct.Current)
-                    await Task.Run(() => CurrentOrders.Add(Make_UserProductsViewModel(order)));
+                    CurrentOrders.Add(Make_UserProductsViewModel(order));
                 else if (order.Status == StatusOfProduct.Completed)
-                    await Task.Run(() => ConfirmOrders.Add(Make_UserProductsViewModel(order)));
+                    ConfirmOrders.Add(Make_UserProductsViewModel(order));
             }
+        }
+        public void                                         Reload_Orders()
+        {
+            NewOrders.Clear();
+            foreach (var order in IoC.Application_Work.All_Orders)
+                if (order.Status == StatusOfProduct.Inpprocessing)
+                    NewOrders.Add(Make_UserProductsViewModel(order));
         }
         public void                                         Add_New_Order(UserProductsViewModel userProductsViewModel)
         {

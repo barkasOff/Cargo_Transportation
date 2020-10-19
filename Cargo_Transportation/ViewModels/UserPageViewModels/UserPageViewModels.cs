@@ -1,9 +1,12 @@
-﻿using Cargo_Transportation.DIHelpers;
+﻿using Cargo_Transportation.Check;
+using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Interfaces;
 using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels.Base;
+using Cargo_Transportation.ViewModels.Order;
+using System;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.UserPageViewModels
@@ -67,24 +70,37 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
         }
         private UserProductsViewModel                           Make_UserProductsViewModel(Product product)
         {
+            var route = IoC.Application_Work.All_Routes.FirstOrDefault(r => r.Product?.Id == product.Id);
             return (new UserProductsViewModel
             {
                 Initials = "CL",
                 ProfilePictureRGB = "89ccb7",
-                Status = product.Status == StatusOfProduct.Completed ? "Confirm" : product.Status == StatusOfProduct.Current ? "Current" : "Inprocessing",
+                Status = StringCheck.Convert_Order_Status(product.Status),
                 UserName = (IoC.Application_Work.Current_User as Client).Login,
                 StatusColor = product.Status == StatusOfProduct.Completed ? "00c541" : product.Status == StatusOfProduct.Current ? "ff4747" : "0080ff",
-                ProductName = product.Name
+                ProductName = product.Name,
+                Product = product,
+                OrderDialogViewModel = new OrderDialogViewModel
+                {
+                    OrderName = product.Name,
+                    OrderWeight = product.ProductWeight.ToString(),
+                    From = route != null ? route.From : "Test",
+                    To = route != null ? route.To : "Test",
+                    DeliveryDate = route != null ? DateTime.Parse(route.DepartureDate.ToString()).ToShortDateString() : "Test",
+                },
+                ShowVariablesOfDialog = StringCheck.Convert_Order_Status_To_Dialog(product.Status),
             });
         }
-        public async void                                       Set_Orders_Async()
+        public void                                             Set_Orders()
         {
+            InboxOrders.Clear();
+            OutboxOrders.Clear();
             foreach (var order in (IoC.Application_Work.Current_User as Client).Products)
             {
                 if (order.OutgoingIncoming)
-                    await Task.Run(() => InboxOrders.Add(Make_UserProductsViewModel(order)));
+                    InboxOrders.Add(Make_UserProductsViewModel(order));
                 else
-                    await Task.Run(() => OutboxOrders.Add(Make_UserProductsViewModel(order)));
+                    OutboxOrders.Add(Make_UserProductsViewModel(order));
             }
         }
     }

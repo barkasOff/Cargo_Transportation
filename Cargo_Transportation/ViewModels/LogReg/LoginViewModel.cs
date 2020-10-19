@@ -3,7 +3,6 @@ using Cargo_Transportation.Dialog;
 using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Enums;
 using Cargo_Transportation.Interfaces;
-using Cargo_Transportation.Models;
 using Cargo_Transportation.Security;
 using Cargo_Transportation.ViewModels.Base;
 using System.Threading.Tasks;
@@ -34,14 +33,13 @@ namespace Cargo_Transportation.ViewModels.LogReg
                 case AplicationUser.User:
                     IoC.UserView.PersonalAreaVM.Update_User_PA();
                     IoC.Application.GoToPage(ApplicationPage.UserPage);
-                    IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.ShowMessage;
-                    IoC.UserView.Set_Orders_Async();
+                    IoC.UserView.Set_Orders();
                     break;
                 case AplicationUser.Dispatcher:
                     IoC.DispatcherView.EmployeePAViewModel.Update_Personal_Area();
                     IoC.Application.GoToPage(ApplicationPage.DispatcherPage);
                     IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.ShowOrderProcessing;
-                    IoC.DispatcherView.Set_Orders_Async();
+                    IoC.DispatcherView.Set_Orders();
                     break;
                 case AplicationUser.Driver:
                     IoC.DriverView.EmployeePAViewModel.Update_Personal_Area();
@@ -49,7 +47,7 @@ namespace Cargo_Transportation.ViewModels.LogReg
                     IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.OrderToTheDriver;
                     break;
                 default:
-                    await IoC.UI.ShowMessage(new MessageBoxDialogViewModel() { Title = "Who are you?" });
+                    await IoC.UI.CommunicationDialog(new MessageBoxDialogViewModel() { Title = "Error", Message = "Who are you?" });
                     break;
             }
         }
