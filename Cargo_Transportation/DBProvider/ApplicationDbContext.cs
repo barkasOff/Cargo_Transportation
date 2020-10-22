@@ -13,7 +13,8 @@ namespace Cargo_Transportation.DBProvider
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=CargTransCompany; Trusted_Connection=True");
+            //optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=usersdb2;Username=postgres;Password=password");
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=CTC; Trusted_Connection=True");
         }
     }
 }

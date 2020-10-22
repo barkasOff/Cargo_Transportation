@@ -74,7 +74,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
             var route = IoC.Application_Work.All_Routes.FirstOrDefault(r => r.Product?.Id == product.Id);
             var car = IoC.Application_Work.All_Cars.FirstOrDefault(r => r.Routes.FirstOrDefault(rot => rot.Id == route?.Id)?.Id == route?.Id);
             foreach (var u in IoC.Application_Work.All_Users)
-                if (u is Employee dr && dr.CarId == product.Route.CarId)
+                if (u is Employee dr && dr.CarId == product.Route?.CarId)
                     driver = dr;
             return (new UserProductsViewModel
             {

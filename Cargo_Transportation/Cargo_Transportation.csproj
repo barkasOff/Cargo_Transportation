@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201022145648_Test1.cs" />
+    <Compile Remove="Migrations\20201022145648_Test1.Designer.cs" />
+    <Compile Remove="Migrations\20201022190955_SqlTest.cs" />
+    <Compile Remove="Migrations\20201022190955_SqlTest.Designer.cs" />
+    <Compile Remove="Migrations\20201022191731_Initial.cs" />
+    <Compile Remove="Migrations\20201022191731_Initial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Fody" Version="6.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -5,7 +5,6 @@ namespace Cargo_Transportation.Models
 {
     public class                Client : User
     {
-        [Required]
         [MaxLength(50)]
         public string           FullName { get; set; }
         [Required]
