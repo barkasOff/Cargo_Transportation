@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cargo_Transportation.Models
 {
-    public class Car
+    public class                Car
     {
         public int              Id { get; set; }
         [Required]

@@ -4,9 +4,9 @@ using System.Security;
 
 namespace Cargo_Transportation.Security
 {
-    public static class SecureStringHelpers
+    public static class         SecureStringHelpers
     {
-        public static string Unsecure(this SecureString secureString)
+        public static string    Unsecure(this SecureString secureString)
         {
             if (secureString == null)
                 return string.Empty;

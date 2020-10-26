@@ -5,16 +5,16 @@ using System.Windows.Media.Animation;
 
 namespace Cargo_Transportation.Animations
 {
-    public enum PageAnimation
+    public enum                     PageAnimation
     {
         None = 0,
         SlideAndFadeInFromRight = 1,
         SlideAndFadeOutToLeft = 2,
     }
 
-    public static class PageAnimations
+    public static class             PageAnimations
     {
-        public static async Task SlideAndFadeInFromRight(this Page page, float seconds)
+        public static async Task    SlideAndFadeInFromRight(this Page page, float seconds)
         {
             var sb = new Storyboard();
 
@@ -24,7 +24,7 @@ namespace Cargo_Transportation.Animations
             page.Visibility = Visibility.Visible;
             await Task.Delay((int)(seconds * 1000));
         }
-        public static async Task SlideAndFadeOutToLeft(this Page page, float seconds)
+        public static async Task    SlideAndFadeOutToLeft(this Page page, float seconds)
         {
             var sb = new Storyboard();
 
@@ -34,7 +34,7 @@ namespace Cargo_Transportation.Animations
             page.Visibility = Visibility.Visible;
             await Task.Delay((int)(seconds * 1000));
         }
-        public static async Task FadeIn(this Page page, float seconds)
+        public static async Task    FadeIn(this Page page, float seconds)
         {
             var sb = new Storyboard();
 

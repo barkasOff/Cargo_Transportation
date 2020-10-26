@@ -1,9 +1,6 @@
-﻿using Cargo_Transportation.DBProvider;
-using Cargo_Transportation.DIHelpers;
+﻿using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Enums;
 using Cargo_Transportation.Models;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Cargo_Transportation.Check
 {

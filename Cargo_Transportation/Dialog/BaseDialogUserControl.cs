@@ -3,10 +3,8 @@ using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels;
 using Cargo_Transportation.ViewModels.Base;
-using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,7 +12,7 @@ using System.Windows.Input;
 
 namespace Cargo_Transportation.Dialog
 {
-    public class BaseDialogUserControl : UserControl
+    public class                        BaseDialogUserControl : UserControl
     {
         private int                     _deliveryCost = 0;
         private readonly DialogWindow   _dialogWindow;

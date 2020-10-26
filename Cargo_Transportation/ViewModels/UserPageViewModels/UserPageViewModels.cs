@@ -1,5 +1,6 @@
 ﻿using Cargo_Transportation.Check;
 using Cargo_Transportation.DIHelpers;
+using Cargo_Transportation.Enums;
 using Cargo_Transportation.Interfaces;
 using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels.Base;

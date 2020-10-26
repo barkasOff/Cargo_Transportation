@@ -1,9 +1,8 @@
 ﻿using Cargo_Transportation.ViewModels.Base;
-using System;
 
 namespace Cargo_Transportation.ViewModels.Order
 {
-    public class OrderDialogViewModel : BaseViewModel
+    public class            OrderDialogViewModel : BaseViewModel
     {
         public string       OrderName { get; set; } = "Empty";
         public string       OrderWeight { get; set; } = "Empty";

@@ -6,9 +6,9 @@ using System.Windows.Controls.Primitives;
 
 namespace Cargo_Transportation.AttachedProperties
 {
-    public class FocusAndSelectProperty : BaseAttachedProperty<FocusAndSelectProperty, bool>
+    public class                FocusAndSelectProperty : BaseAttachedProperty<FocusAndSelectProperty, bool>
     {
-        public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        public override void    OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             if (sender is TextBoxBase control && (bool)e.NewValue)
             {
@@ -22,15 +22,14 @@ namespace Cargo_Transportation.AttachedProperties
             }
         }
     }
-    public class TextEntryWidthMatcherProperty : BaseAttachedProperty<TextEntryWidthMatcherProperty, bool>
+    public class                TextEntryWidthMatcherProperty : BaseAttachedProperty<TextEntryWidthMatcherProperty, bool>
     {
-        public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        public override void    OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             var panel = (sender as Panel);
 
             SetWidths(panel);
-            RoutedEventHandler onLoaded = null;
-            onLoaded = (s, ee) =>
+            void onLoaded(object s, RoutedEventArgs ee)
             {
                 panel.Loaded -= onLoaded;
                 SetWidths(panel);
@@ -44,7 +43,8 @@ namespace Cargo_Transportation.AttachedProperties
                         SetWidths(panel);
                     };
                 }
-            };
+            }
+
             panel.Loaded += onLoaded;
         }
         private void SetWidths(Panel panel)

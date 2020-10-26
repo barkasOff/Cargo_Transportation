@@ -3,12 +3,12 @@ using System.Windows;
 
 namespace Cargo_Transportation.AttachedProperties
 {
-    public abstract class AnimateBaseProperty<Parent> : BaseAttachedProperty<Parent, bool>
+    public abstract class               AnimateBaseProperty<Parent> : BaseAttachedProperty<Parent, bool>
            where Parent : BaseAttachedProperty<Parent, bool>, new()
     {
-        public bool FirstLoad { get; set; } = true;
+        public bool                     FirstLoad { get; set; } = true;
 
-        public override void OnValueUpdated(DependencyObject sender, object value)
+        public override void            OnValueUpdated(DependencyObject sender, object value)
         {
             if (!(sender is FrameworkElement element))
                 return;
@@ -16,25 +16,25 @@ namespace Cargo_Transportation.AttachedProperties
                 return;
             if (FirstLoad)
             {
-                RoutedEventHandler onLoaded = null;
-                onLoaded = (ss, ee) =>
+                void onLoaded(object ss, RoutedEventArgs ee)
                 {
                     element.Loaded -= onLoaded;
                     DoAnimation(element, (bool)value);
                     FirstLoad = false;
-                };
+                }
+
                 element.Loaded += onLoaded;
             }
             else
                 DoAnimation(element, (bool)value);
         }
 
-        protected virtual void DoAnimation(FrameworkElement element, bool value) { }
+        protected virtual void          DoAnimation(FrameworkElement element, bool value) { }
     }
 
-    public class AnimateSlideInFromLeftProperty : AnimateBaseProperty<AnimateSlideInFromLeftProperty>
+    public class                        AnimateSlideInFromLeftProperty : AnimateBaseProperty<AnimateSlideInFromLeftProperty>
     {
-        protected override async void DoAnimation(FrameworkElement element, bool value)
+        protected override async void   DoAnimation(FrameworkElement element, bool value)
         {
             if (value)
                 await element.SlideAndFadeInFromLeft(FirstLoad ? 0 : 0.7f);
@@ -42,9 +42,9 @@ namespace Cargo_Transportation.AttachedProperties
                 await element.SlideAndFadeOutToLeft(FirstLoad ? 0 : 0.7f);
         }
     }
-    public class AnimateSlideInFromRightProperty : AnimateBaseProperty<AnimateSlideInFromRightProperty>
+    public class                        AnimateSlideInFromRightProperty : AnimateBaseProperty<AnimateSlideInFromRightProperty>
     {
-        protected override async void DoAnimation(FrameworkElement element, bool value)
+        protected override async void   DoAnimation(FrameworkElement element, bool value)
         {
             if (value)
                 await element.SlideAndFadeInFromRight(FirstLoad ? 0 : 0.7f);
@@ -52,9 +52,9 @@ namespace Cargo_Transportation.AttachedProperties
                 await element.SlideAndFadeOutToRight(FirstLoad ? 0 : 0.7f);
         }
     }
-    public class AnimateFadeInProperty : AnimateBaseProperty<AnimateFadeInProperty>
+    public class                        AnimateFadeInProperty : AnimateBaseProperty<AnimateFadeInProperty>
     {
-        protected override async void DoAnimation(FrameworkElement element, bool value)
+        protected override async void   DoAnimation(FrameworkElement element, bool value)
         {
             if (value)
                 await element.FadeIn(FirstLoad ? 0 : 0.3f);

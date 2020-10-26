@@ -21,7 +21,7 @@ namespace Cargo_Transportation.ViewModels.AdminViewModels
             ShowEmployeeInfoCommand = new RelayCommand(ShowEmployeeInfoMethod);
         }
 
-        private void ShowEmployeeInfoMethod()
+        private void        ShowEmployeeInfoMethod()
         {
             IoC.UI.EmployeeInfo(new EmployeeDialoViewModel()
             {

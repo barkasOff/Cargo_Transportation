@@ -2,8 +2,8 @@
 
 namespace Cargo_Transportation.Interfaces
 {
-    public interface IHavePassword
+    public interface    IHavePassword
     {
-        SecureString SecurePassword { get; }
+        SecureString    SecurePassword { get; }
     }
 }

@@ -3,13 +3,11 @@ using System.Windows.Controls;
 
 namespace Cargo_Transportation.AttachedProperties
 {
-    public class MonitorPasswordProperty : BaseAttachedProperty<MonitorPasswordProperty, bool>
+    public class                MonitorPasswordProperty : BaseAttachedProperty<MonitorPasswordProperty, bool>
     {
-        public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        public override void    OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var passwordBox = sender as PasswordBox;
-
-            if (passwordBox == null)
+            if (!(sender is PasswordBox passwordBox))
                 return;
             passwordBox.PasswordChanged -= PasswordBox_PasswordChanged;
             if ((bool)e.NewValue)
@@ -18,14 +16,14 @@ namespace Cargo_Transportation.AttachedProperties
                 passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
             }
         }
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        private void            PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             HasTextProperty.SetValue((PasswordBox)sender);
         }
     }
     public class HasTextProperty : BaseAttachedProperty<HasTextProperty, bool>
     {
-        public static void SetValue(DependencyObject sender)
+        public static void      SetValue(DependencyObject sender)
         {
             SetValue(sender, ((PasswordBox)sender).SecurePassword.Length > 0);
         }

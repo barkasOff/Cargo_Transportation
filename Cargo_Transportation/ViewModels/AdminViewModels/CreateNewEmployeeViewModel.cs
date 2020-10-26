@@ -3,7 +3,6 @@ using Cargo_Transportation.Dialog;
 using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels.Base;
-using System;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.AdminViewModels
@@ -25,7 +24,7 @@ namespace Cargo_Transportation.ViewModels.AdminViewModels
             CreateNewEmployeeCommand = new RelayCommand(CreateNewEmployeeMethod);
         }
 
-        private void CreateNewEmployeeMethod()
+        private void        CreateNewEmployeeMethod()
         {
             // TODO: Валидация данных
             WorkWithDB.Set_User_Async(new Employee()

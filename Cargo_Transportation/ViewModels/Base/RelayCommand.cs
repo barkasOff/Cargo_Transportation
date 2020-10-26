@@ -3,9 +3,9 @@ using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.Base
 {
-    public class RelayCommand : ICommand
+    public class                    RelayCommand : ICommand
     {
-        private Action              _action;
+        private readonly Action     _action;
 
         public event EventHandler   CanExecuteChanged = (sender, e) => { };
 
@@ -15,15 +15,15 @@ namespace Cargo_Transportation.ViewModels.Base
 
         public void                 Execute(object parameter) => _action();
     }
-    public class RelayCommandParameter : ICommand
+    public class                        RelayCommandParameter : ICommand
     {
-        private Action<object> _action;
+        private readonly Action<object> _action;
 
-        public event EventHandler CanExecuteChanged = (sender, e) => { };
+        public event EventHandler       CanExecuteChanged = (sender, e) => { };
 
         public RelayCommandParameter(Action<object> action) => _action = action;
 
-        public bool CanExecute(object parameter) => true;
-        public void Execute(object parameter) => _action(parameter);
+        public bool                     CanExecute(object parameter) => true;
+        public void                     Execute(object parameter) => _action(parameter);
     }
 }

@@ -1,4 +1,4 @@
-﻿using Cargo_Transportation.Interfaces;
+﻿using Cargo_Transportation.Enums;
 using Cargo_Transportation.Pages;
 using Cargo_Transportation.Pages.AdministratorPages;
 using Cargo_Transportation.Pages.DispatcherPages;
@@ -9,9 +9,9 @@ using System.Diagnostics;
 
 namespace Cargo_Transportation.ValueConverters
 {
-    public static class ApplicationPageHelpers
+    public static class                 ApplicationPageHelpers
     {
-        public static BasePage ToBasePage(this ApplicationPage page, object viewModel = null)
+        public static BasePage          ToBasePage(this ApplicationPage page)
         {
             switch (page)
             {
@@ -32,7 +32,7 @@ namespace Cargo_Transportation.ValueConverters
                     return null;
             }
         }
-        public static ApplicationPage ToApplicationPage(this BasePage page)
+        public static ApplicationPage   ToApplicationPage(this BasePage page)
         {
             if (page is LoginPage)
                 return ApplicationPage.Login;
@@ -49,7 +49,7 @@ namespace Cargo_Transportation.ValueConverters
             else
             {
                 Debugger.Break();
-                return default(ApplicationPage);
+                return default;
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace Cargo_Transportation.Interfaces
+﻿namespace Cargo_Transportation.Enums
 {
     public enum ApplicationPage
     {

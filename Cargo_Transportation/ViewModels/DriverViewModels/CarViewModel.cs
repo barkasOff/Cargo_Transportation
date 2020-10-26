@@ -1,7 +1,5 @@
-﻿using Cargo_Transportation.DIHelpers;
-using Cargo_Transportation.Models;
+﻿using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels.Base;
-using System.Linq;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.DriverViewModels

@@ -6,10 +6,10 @@ namespace Cargo_Transportation
     /// <summary>
     /// Логика взаимодействия для DialogWindow.xaml
     /// </summary>
-    public partial class DialogWindow : Window
+    public partial class                DialogWindow : Window
     {
-        private DialogWindowViewModel _viewModel;
-        public DialogWindowViewModel ViewModel
+        private DialogWindowViewModel   _viewModel;
+        public DialogWindowViewModel    ViewModel
         {
             get => _viewModel;
             set

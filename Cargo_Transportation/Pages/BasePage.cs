@@ -6,15 +6,15 @@ using System.Windows.Controls;
 
 namespace Cargo_Transportation.Pages
 {
-    public class BasePage : Page
+    public class                BasePage : Page
     {
-        private object _viewModel;
+        private object          _viewModel;
 
-        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromRight;
-        public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutToLeft;
-        public float SlideSeconds { get; set; } = 0.8f;
-        public bool ShouldAnimateOut { get; set; }
-        public object ViewModelObject
+        public PageAnimation    PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromRight;
+        public PageAnimation    PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutToLeft;
+        public float            SlideSeconds { get; set; } = 0.8f;
+        public bool             ShouldAnimateOut { get; set; }
+        public object           ViewModelObject
         {
             get => _viewModel;
             set
@@ -35,14 +35,14 @@ namespace Cargo_Transportation.Pages
             Loaded += BasePage_Loaded;
         }
 
-        private async void BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private async void      BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             if (ShouldAnimateOut)
                 await AnimateOut();
             else
                 await AnimateIn();
         }
-        public async Task AnimateIn()
+        public async Task       AnimateIn()
         {
             if (PageLoadAnimation == PageAnimation.None)
                 return;
@@ -54,7 +54,7 @@ namespace Cargo_Transportation.Pages
             }
             PageLoadAnimation = PageAnimation.SlideAndFadeInFromRight;
         }
-        public async Task AnimateOut()
+        public async Task       AnimateOut()
         {
             if (PageUnloadAnimation == PageAnimation.None)
                 return;

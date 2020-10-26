@@ -2,7 +2,6 @@
 using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels.Base;
-using Cargo_Transportation.ViewModels.DriverViewModels;
 using Cargo_Transportation.ViewModels.Order;
 using Cargo_Transportation.ViewModels.UserPageViewModels;
 using System;

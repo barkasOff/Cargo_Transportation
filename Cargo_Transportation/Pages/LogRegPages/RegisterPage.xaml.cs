@@ -7,7 +7,7 @@ namespace Cargo_Transportation.Pages.LogRegPages
     /// <summary>
     /// Логика взаимодействия для RegisterPage.xaml
     /// </summary>
-    public partial class RegisterPage : BasePage, IHavePassword
+    public partial class        RegisterPage : BasePage, IHavePassword
     {
         public RegisterPage()
         {
@@ -15,6 +15,6 @@ namespace Cargo_Transportation.Pages.LogRegPages
             DataContext = new RegisterViewModel();
         }
 
-        public SecureString SecurePassword => PasswordText.SecurePassword;
+        public SecureString     SecurePassword => PasswordText.SecurePassword;
     }
 }

@@ -66,7 +66,7 @@ namespace Cargo_Transportation.ViewModels.Input
                     break;
             }
         }
-        private async void          Update_Real_Data()
+        private async void      Update_Real_Data()
         {
             // TODO: Add to db
             await Task.Run(() =>

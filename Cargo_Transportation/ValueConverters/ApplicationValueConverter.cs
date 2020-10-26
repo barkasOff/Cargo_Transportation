@@ -1,4 +1,5 @@
-﻿using Cargo_Transportation.Interfaces;
+﻿using Cargo_Transportation.Enums;
+using Cargo_Transportation.Interfaces;
 using Cargo_Transportation.Pages.AdministratorPages;
 using Cargo_Transportation.Pages.DispatcherPages;
 using Cargo_Transportation.Pages.DriverPages;
@@ -10,9 +11,9 @@ using System.Globalization;
 
 namespace Cargo_Transportation.ValueConverters
 {
-    public class ApplicationValueConverter : BaseValueConverter<ApplicationValueConverter>
+    public class                ApplicationValueConverter : BaseValueConverter<ApplicationValueConverter>
     {
-        public override object Convert(object value, Type targetType = null,
+        public override object  Convert(object value, Type targetType = null,
             object parameter = null, CultureInfo culture = null)
         {
             switch ((ApplicationPage)value)

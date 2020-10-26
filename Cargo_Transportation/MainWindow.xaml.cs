@@ -7,7 +7,7 @@ namespace Cargo_Transportation
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class    MainWindow : Window
     {
         public MainWindow()
         {
@@ -15,10 +15,10 @@ namespace Cargo_Transportation
             DataContext = new WindowViewModel(this);
         }
 
-        private void Window_Activated(object sender, System.EventArgs e) =>
+        private void        Window_Activated(object sender, System.EventArgs e) =>
             IoC.Application.DimmebleOverlayVisible = false;
 
-        private void Window_Deactivated(object sender, System.EventArgs e) =>
+        private void        Window_Deactivated(object sender, System.EventArgs e) =>
             IoC.Application.DimmebleOverlayVisible = true;
     }
 }

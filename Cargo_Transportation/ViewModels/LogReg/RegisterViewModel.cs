@@ -1,6 +1,7 @@
 ﻿using Cargo_Transportation.DBProvider;
 using Cargo_Transportation.Dialog;
 using Cargo_Transportation.DIHelpers;
+using Cargo_Transportation.Enums;
 using Cargo_Transportation.Interfaces;
 using Cargo_Transportation.Models;
 using Cargo_Transportation.Security;
