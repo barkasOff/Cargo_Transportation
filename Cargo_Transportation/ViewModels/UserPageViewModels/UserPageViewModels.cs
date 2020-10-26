@@ -92,6 +92,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
                     From = route != null ? route.From : "Empty",
                     To = route != null ? route.To : "Empty",
                     DeliveryDate = route != null ? DateTime.Parse(route.DepartureDate.ToString()).ToShortDateString() : "Empty",
+                    DeliveryCost = route?.DeliveryCost.ToString() ?? "Empty",
                     CarBrand = driver?.Car?.CarBrand ?? "Empty",
                     CarNumber = driver?.Car?.CarNumber ?? "Empty",
                     DispetcherName = driver?.Car?.CarBrand ?? "Empty",

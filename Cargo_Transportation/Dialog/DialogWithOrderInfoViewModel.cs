@@ -13,8 +13,7 @@ namespace Cargo_Transportation.Dialog
     public class                                    DialogWithOrderInfoViewModel : BaseDiallogViewModel
     {
         public string                               Id { get; set; }
-        public string                               PriceOneCar { get; set; }
-        public string                               NumberCars { get; set; }
+        public string                               OrderCost { get; set; }
         public string                               DeliveryCost { get; set; }
         public Product                              Product { get; set; }
         public OrderDialogViewModel                 OrderDialogViewModel { get; set; }
@@ -30,17 +29,15 @@ namespace Cargo_Transportation.Dialog
             Initialize_CarViewModel();
             CompanyCars.CollectionChanged += CompanyCars_CollectionChanged;
         }
-        private void CompanyCars_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+        private void                                CompanyCars_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             (sender as ObservableCollection<CarViewModel>).Last().PropertyChanged += DialogWithOrderInfoViewModel_PropertyChanged;
-
-        private void DialogWithOrderInfoViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void                                DialogWithOrderInfoViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if ((sender as CarViewModel).SelectColor == "8a8a8a")
                 foreach (var car in CompanyCars)
                     if (car != (sender as CarViewModel))
                         car.SelectColor = "7d7d7d";
         }
-
         private CarViewModel                        Create_CarViewModel(Car car)
         {
             Employee driver = null;
@@ -49,7 +46,7 @@ namespace Cargo_Transportation.Dialog
                 if (us is Employee dr && dr?.CarId == car.Id)
                     driver = dr;
             foreach (var rot in IoC.Application_Work.All_Routes)
-                if (rot.CarId == car.Id)
+                if (rot.CarId == car.Id && rot.Status)
                     route = rot;
             return (new CarViewModel() 
             {

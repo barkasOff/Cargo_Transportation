@@ -7,7 +7,6 @@ using Cargo_Transportation.ViewModels.Order;
 using Cargo_Transportation.ViewModels.UserPageViewModels;
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.DriverViewModels
@@ -50,7 +49,7 @@ namespace Cargo_Transportation.ViewModels.DriverViewModels
             else
             {
                 WorkWithDB.Update_Product_Async(route.Product, StatusOfProduct.Completed);
-                WorkWithDB.Remove_Car_Route(_car);
+                // WorkWithDB.Remove_Car_Route(_car);
                 await IoC.UI.CommunicationDialog(new MessageBoxDialogViewModel() { Title = "Congratulations", Message = "Well done!!" });
                 CommandText = "No command";
                 OrderDialogViewModel = new OrderDialogViewModel();
@@ -69,7 +68,7 @@ namespace Cargo_Transportation.ViewModels.DriverViewModels
         public void                     Assigned_Order()
         {
             Route rt = null;
-            var car = (IoC.Application_Work.Current_User as Employee).Car;
+            var car = (IoC.Application_Work.Current_User as Employee)?.Car;
 
             foreach (var r in IoC.Application_Work.All_Routes)
                 if (r.CarId == car?.Id && (r.Product.Status == StatusOfProduct.Current || r.Product.Status == StatusOfProduct.HoldDriverAccept))
@@ -85,6 +84,7 @@ namespace Cargo_Transportation.ViewModels.DriverViewModels
                     From = route != null ? route?.From : "Empty",
                     To = route != null ? route?.To : "Empty",
                     DeliveryDate = route != null ? DateTime.Parse(route.DepartureDate.ToString()).ToShortDateString() : "Empty",
+                    DeliveryCost = route?.DeliveryCost.ToString() ?? "Empty",
                     CarBrand = car?.CarBrand ?? "Empty",
                     CarNumber = car?.CarNumber ?? "Empty",
                     DispetcherName = car?.CarBrand ?? "Empty",

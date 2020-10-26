@@ -57,7 +57,6 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
             }
             var product = Create_New_Order();
             WorkWithDB.Set_Routes_Async(Create_New_Route(product));
-            // TODO: Add to db
             var userPVM = new UserProductsViewModel
             {
                 Initials = "CL",
@@ -74,6 +73,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
             IoC.DispatcherView.Add_New_Order(userPVM);
             Clear_Data();
             IoC.UserView.Set_Orders();
+            await IoC.UI.CommunicationDialog(new MessageBoxDialogViewModel() { Title = "Congratulations", Message = "Thank you for order!!" });
         }
         private void            Clear_Data()
         {

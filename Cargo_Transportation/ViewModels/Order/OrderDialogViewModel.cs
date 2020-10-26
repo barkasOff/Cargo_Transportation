@@ -11,6 +11,7 @@ namespace Cargo_Transportation.ViewModels.Order
         public string       To { get; set; } = "Empty";
         public string       DeliveryDate { get; set; } = "Empty";
         public string       DispetcherName { get; set; } = "Empty";
+        public string       DeliveryCost { get; set; }
         public string       DriverName { get; set; } = "Empty";
         public string       CarBrand { get; set; } = "Empty";
         public string       CarNumber { get; set; } = "Empty";

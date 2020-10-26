@@ -16,8 +16,6 @@ namespace Cargo_Transportation.Dialog
 {
     public class BaseDialogUserControl : UserControl
     {
-        private int                     _priceOneCar = 0;
-        private int                     _numberCars = 0;
         private int                     _deliveryCost = 0;
         private readonly DialogWindow   _dialogWindow;
 
@@ -78,12 +76,11 @@ namespace Cargo_Transportation.Dialog
         }
         private void                    SendMethod()
         {
-            if (!int.TryParse((DataContext as DialogWithOrderInfoViewModel).PriceOneCar, out _priceOneCar) ||
-                !int.TryParse((DataContext as DialogWithOrderInfoViewModel).NumberCars, out _numberCars) ||
-                !int.TryParse((DataContext as DialogWithOrderInfoViewModel).DeliveryCost, out _deliveryCost))
+            if (!int.TryParse((DataContext as DialogWithOrderInfoViewModel).DeliveryCost, out _deliveryCost))
                 return;
             _dialogWindow.Close();
             WorkWithDB.Update_Product_Async((DataContext as DialogWithOrderInfoViewModel).Product, StatusOfProduct.HoldUserAccept);
+            WorkWithDB.Update_Route_Async((DataContext as DialogWithOrderInfoViewModel).Product.Route, _deliveryCost);
             (DataContext as DialogWithOrderInfoViewModel).Product.Status = StatusOfProduct.HoldUserAccept;
             IoC.DispatcherView.Reload_Orders();
         }

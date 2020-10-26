@@ -48,8 +48,8 @@
                 Grid.Row="4"
                 Margin="5"
                 FontSize="16">
-                <Run FontWeight="Bold" Text="Adoption Date:" />
-                <Run Text="{Binding AdoptionDate, FallbackValue=Empty}" />
+                <Run FontWeight="Bold" Text="Delivery Cost:" />
+                <Run Text="{Binding DeliveryCost, FallbackValue=Empty}" />
             </TextBlock>
         </Grid>
     </Border>

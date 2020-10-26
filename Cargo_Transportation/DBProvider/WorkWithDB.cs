@@ -83,6 +83,18 @@ namespace Cargo_Transportation.DBProvider
             await Task.Run(() => context.Products.Update(dbProduct));
             await context.SaveChangesAsync();
         }
+        public static async void            Update_Route_Async(Route route, int deliveryCost)
+        {
+            route.DeliveryCost = deliveryCost;
+            foreach (var r in IoC.Application_Work.All_Routes)
+                if (r.Id == route.Id)
+                    r.DeliveryCost = deliveryCost;
+            using var context = new ApplicationDbContext();
+            var dbRoute = context.Routes.First(r => r.Id == route.Id);
+            dbRoute.DeliveryCost = deliveryCost;
+            await Task.Run(() => context.Routes.Update(dbRoute));
+            await context.SaveChangesAsync();
+        }
         public static async void            Update_Car_Async(Car car, Route route)
         {
             IoC.Application_Work.All_Routes.First(r => r.Id == route.Id).Car = car;

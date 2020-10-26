@@ -48,14 +48,6 @@
                     VerticalAlignment="Center">
                     <TextBox
                         Style="{StaticResource AuthorizationTB}"
-                        Tag="Price for 1 car"
-                        Text="{Binding PriceOneCar, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBox
-                        Style="{StaticResource AuthorizationTB}"
-                        Tag="Number of cars"
-                        Text="{Binding NumberCars, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBox
-                        Style="{StaticResource AuthorizationTB}"
                         Tag="Cost of delivery"
                         Text="{Binding DeliveryCost, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" />
                     <StackPanel Orientation="Horizontal">

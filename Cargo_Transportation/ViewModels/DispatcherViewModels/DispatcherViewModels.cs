@@ -97,6 +97,7 @@ namespace Cargo_Transportation.ViewModels.DispatcherViewModels
                     From = route != null ? route.From : "Empty",
                     To = route != null ? route.To : "Empty",
                     DeliveryDate = route != null ? DateTime.Parse(route.DepartureDate.ToString()).ToShortDateString() : "Empty",
+                    DeliveryCost = route?.DeliveryCost.ToString() ?? "Empty",
                     CarBrand = car?.CarBrand ?? "Empty",
                     CarNumber = car?.CarNumber ?? "Empty",
                     DispetcherName = car?.CarBrand ?? "Empty",

@@ -3,9 +3,7 @@ using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Interfaces;
 using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels.Base;
-using Cargo_Transportation.ViewModels.DriverViewModels;
 using Cargo_Transportation.ViewModels.Order;
-using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.UserPageViewModels
@@ -40,6 +38,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
                     Title = "Order Information",
                     Product = this.Product,
                     Id = this.Product.Id.ToString(),
+                    DeliveryCost = OrderDialogViewModel.DeliveryCost,
                     OrderDialogViewModel = this.OrderDialogViewModel,
                 });
             else if (Product.Status == StatusOfProduct.HoldDispetcherToDriverAccept)
@@ -49,6 +48,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
                     Title = "Order To Driver Sending",
                     Product = this.Product,
                     Id = this.Product.Id.ToString(),
+                    DeliveryCost = OrderDialogViewModel.DeliveryCost,
                     OrderDialogViewModel = this.OrderDialogViewModel,
                 });
             }
@@ -58,6 +58,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
                     Title = "Order Information",
                     Product = this.Product,
                     Id = this.Product.Id.ToString(),
+                    DeliveryCost = OrderDialogViewModel.DeliveryCost,
                     OrderDialogViewModel = this.OrderDialogViewModel,
                 });
         }
@@ -70,6 +71,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
                     Title = "Accepted Order",
                     Product = this.Product,
                     Id = this.Product.Id.ToString(),
+                    DeliveryCost = OrderDialogViewModel.DeliveryCost,
                     OrderDialogViewModel = this.OrderDialogViewModel,
                 });
             }
@@ -95,6 +97,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
                 Title = "Order Processing",
                 Product = this.Product,
                 Id = this.Product.Id.ToString(),
+                DeliveryCost = OrderDialogViewModel.DeliveryCost,
                 OrderDialogViewModel = this.OrderDialogViewModel
             });
         }

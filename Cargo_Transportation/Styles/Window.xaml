@@ -32,8 +32,28 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" HorizontalAlignment="Right">
-                                    <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Command="{Binding MenuCommand}" Style="{StaticResource SystemIconButton}">
+                                        <Image Source="/Images/Russia.ico" />
+                                    </Button>
+                                    <TextBlock
+                                        Grid.ColumnSpan="3"
+                                        Margin="10,0,0,0"
+                                        HorizontalAlignment="Center"
+                                        FontStyle="Italic">
+                                        <Run Foreground="White" Text="Carg" />
+                                        <Run Foreground="Blue" Text="Trans" />
+                                        <Run Foreground="Red" Text="Company" />
+                                    </TextBlock>
+                                    <StackPanel
+                                        Grid.Column="2"
+                                        HorizontalAlignment="Right"
+                                        Orientation="Horizontal">
                                         <Button
                                             Command="{Binding MinimizeCommand}"
                                             Content="_"
