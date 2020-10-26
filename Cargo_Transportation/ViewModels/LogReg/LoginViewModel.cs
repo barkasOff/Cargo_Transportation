@@ -47,6 +47,11 @@ namespace Cargo_Transportation.ViewModels.LogReg
                     IoC.Application.OrderProcessingOrInformation = ShowVariablesOfDialog.OrderToTheDriver;
                     IoC.DriverView.Assigned_Order();
                     break;
+                case AplicationUser.Admin:
+                    IoC.AdminView.Update_PA();
+                    IoC.Application.GoToPage(ApplicationPage.Admin);
+                    IoC.AdminView.Set_Employees();
+                    break;
                 default:
                     await IoC.UI.CommunicationDialog(new MessageBoxDialogViewModel() { Title = "Error", Message = "Who are you?" });
                     break;

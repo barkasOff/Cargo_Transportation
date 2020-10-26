@@ -1,5 +1,6 @@
 ﻿using Cargo_Transportation.Interfaces;
 using Cargo_Transportation.ViewModels;
+using Cargo_Transportation.ViewModels.AdminViewModels;
 using Cargo_Transportation.ViewModels.DispatcherViewModels;
 using Cargo_Transportation.ViewModels.DriverViewModels;
 using Cargo_Transportation.ViewModels.LogReg;
@@ -17,6 +18,7 @@ namespace Cargo_Transportation.DIHelpers
         public static RegisterViewModel RegisterView => Get<RegisterViewModel>();
         public static UserPageViewModels UserView => Get<UserPageViewModels>();
         public static DispatcherViewModels DispatcherView => Get<DispatcherViewModels>();
+        public static AdminViewModel AdminView => Get<AdminViewModel>();
         public static DriverViewModel DriverView => Get<DriverViewModel>();
         public static EmployeeViewModel EmployeeView => Get<EmployeeViewModel>();
         public static IUIManager UI => Get<IUIManager>();
@@ -31,6 +33,7 @@ namespace Cargo_Transportation.DIHelpers
             Kernel.Bind<UserPageViewModels>().ToConstant(new UserPageViewModels());
             Kernel.Bind<DispatcherViewModels>().ToConstant(new DispatcherViewModels());
             Kernel.Bind<DriverViewModel>().ToConstant(new DriverViewModel());
+            Kernel.Bind<AdminViewModel>().ToConstant(new AdminViewModel());
             Kernel.Bind<EmployeeViewModel>().ToConstant(new EmployeeViewModel());
             Kernel.Bind<Application_Work>().ToConstant(new Application_Work());
         }

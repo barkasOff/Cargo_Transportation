@@ -1,0 +1,91 @@
+﻿<dialog:BaseDialogUserControl
+    x:Class="Cargo_Transportation.Dialog.Controls.EmployeeInfoControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dialog="clr-namespace:Cargo_Transportation.Dialog"
+    xmlns:local="clr-namespace:Cargo_Transportation.Dialog.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Border Padding="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Padding="10,0,10,3"
+                FontSize="24"
+                FontWeight="Bold"
+                Text="Сотрудник"
+                TextDecorations="Underline" />
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="5"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Text="ФИО" />
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Text="{Binding FullName}" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="5"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Text="Номер телефона" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Text="{Binding PhoneNumber}" />
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="5,5,30,5"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Text="Электронная почта" />
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Text="{Binding Email}" />
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Margin="5"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Text="Должность" />
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Text="{Binding Position}" />
+            </Grid>
+        </Grid>
+    </Border>
+
+</dialog:BaseDialogUserControl>

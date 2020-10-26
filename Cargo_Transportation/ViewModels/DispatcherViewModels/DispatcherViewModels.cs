@@ -69,7 +69,7 @@ namespace Cargo_Transportation.ViewModels.DispatcherViewModels
             Orders = NewOrders;
             HideUnnecessaryInfo();
         }
-        private UserProductsViewModel                       Make_UserProductsViewModel(Product product)
+        public UserProductsViewModel                        Make_UserProductsViewModel(Product product)
         {
             Employee driver = null;
             string login = "";

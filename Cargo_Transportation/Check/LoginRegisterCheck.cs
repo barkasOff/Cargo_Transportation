@@ -28,6 +28,8 @@ namespace Cargo_Transportation.Check
                         return (AplicationUser.Dispatcher);
                     else if (user is Employee && (user as Employee).Position == "Driver" && user.Parol == password)
                         return (AplicationUser.Driver);
+                    else if (user is Employee && (user as Employee).Position == "Administrator" && user.Parol == password)
+                        return (AplicationUser.Admin);
                 }
             }
             IoC.Application_Work.Current_User = null;

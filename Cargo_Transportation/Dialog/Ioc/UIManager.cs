@@ -9,6 +9,8 @@ namespace Cargo_Transportation.Dialog.Ioc
     {
         public Task CommunicationDialog(MessageBoxDialogViewModel viewModel) =>
             new UserDialogControl().ShowDialog(viewModel);
+        public Task EmployeeInfo(EmployeeDialoViewModel viewModel) =>
+            new EmployeeInfoControl().ShowDialog(viewModel);
         public Task AppointDriverCarDialog(DialogWithOrderInfoViewModel viewModel) =>
             new AppointDriverCar().ShowDialog(viewModel);
         public Task ShowMessage(DialogWithOrderInfoViewModel viewModel) =>

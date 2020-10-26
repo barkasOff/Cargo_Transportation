@@ -7,5 +7,6 @@
         UserPage = 2,
         DispatcherPage = 3,
         Driver = 4,
+        Admin = 5
     }
 }

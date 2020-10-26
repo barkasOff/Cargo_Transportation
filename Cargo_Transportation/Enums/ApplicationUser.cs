@@ -5,6 +5,7 @@
         User = 0,
         Dispatcher = 1,
         Driver = 2,
-        None = 3
+        Admin = 3,
+        None = 4
     }
 }

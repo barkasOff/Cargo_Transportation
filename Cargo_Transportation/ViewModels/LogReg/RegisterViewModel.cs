@@ -27,6 +27,7 @@ namespace Cargo_Transportation.ViewModels.LogReg
             GOTOLoginPage = new RelayCommand(GOTOLoginPageMethodAsync);
         }
 
+        // TODO: Validation
         private bool        Check_Password(string password)
         {
             if (password == string.Empty)

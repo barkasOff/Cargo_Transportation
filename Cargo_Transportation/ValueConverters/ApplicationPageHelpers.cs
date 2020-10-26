@@ -1,5 +1,6 @@
 ﻿using Cargo_Transportation.Interfaces;
 using Cargo_Transportation.Pages;
+using Cargo_Transportation.Pages.AdministratorPages;
 using Cargo_Transportation.Pages.DispatcherPages;
 using Cargo_Transportation.Pages.DriverPages;
 using Cargo_Transportation.Pages.LogRegPages;
@@ -24,6 +25,8 @@ namespace Cargo_Transportation.ValueConverters
                     return new DispatcherPage();
                 case ApplicationPage.Driver:
                     return new DriverPage();
+                case ApplicationPage.Admin:
+                    return new AdminPage();
                 default:
                     Debugger.Break();
                     return null;
@@ -41,6 +44,8 @@ namespace Cargo_Transportation.ValueConverters
                 return ApplicationPage.DispatcherPage;
             else if (page is DriverPage)
                 return ApplicationPage.Driver;
+            else if (page is AdminPage)
+                return ApplicationPage.Admin;
             else
             {
                 Debugger.Break();

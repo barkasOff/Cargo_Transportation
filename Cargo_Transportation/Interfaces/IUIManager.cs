@@ -7,6 +7,7 @@ namespace Cargo_Transportation.Interfaces
     {
         Task AppointDriverCarDialog(DialogWithOrderInfoViewModel viewModel);
         Task CommunicationDialog(MessageBoxDialogViewModel viewModel);
+        Task EmployeeInfo(EmployeeDialoViewModel viewModel);
         Task ShowMessage(DialogWithOrderInfoViewModel viewModel);
         Task ChoiseShowMessage(DialogWithOrderInfoViewModel viewModel);
         Task ShowOrderProcessing(DialogWithOrderInfoViewModel viewModel);

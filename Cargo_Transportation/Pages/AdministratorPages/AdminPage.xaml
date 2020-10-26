@@ -1,0 +1,109 @@
+﻿<pages:BasePage
+    x:Class="Cargo_Transportation.Pages.AdministratorPages.AdminPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:adminpagecontrols="clr-namespace:Cargo_Transportation.Controls.AdminPageControls"
+    xmlns:attachedProperties="clr-namespace:Cargo_Transportation.AttachedProperties"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Cargo_Transportation.Pages.AdministratorPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Cargo_Transportation.Pages"
+    xmlns:valueConverters="clr-namespace:Cargo_Transportation.ValueConverters"
+    Title="AdminPage"
+    mc:Ignorable="d">
+
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.ColumnSpan="2"
+                Width="25"
+                Height="25"
+                Margin="10"
+                Padding="7"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Panel.ZIndex="1"
+                attachedProperties:AnimateFadeInProperty.Value="{Binding ShowAdminSidebar, Converter={valueConverters:BooleanInvertConverter}}"
+                Command="{Binding ShowSideBarCommand}"
+                Content="☰"
+                Cursor="Hand" />
+            <Grid Grid.Column="0">
+                <adminpagecontrols:AdminPersonalAreaControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowPA}" DataContext="{Binding AdminPAViewModel}" />
+                <adminpagecontrols:EmployeeControl attachedProperties:AnimateFadeInProperty.Value="{Binding ShowEmployees}" />
+                <adminpagecontrols:CreateNewEmployee attachedProperties:AnimateFadeInProperty.Value="{Binding ShowCreateNewEmployee}" DataContext="{Binding CreateNewEmployeeViewModel}" />
+                <adminpagecontrols:OrdersToAdmin attachedProperties:AnimateFadeInProperty.Value="{Binding ShowOrdersToAdmin}" />
+            </Grid>
+            <Border
+                Grid.Column="1"
+                Padding="20"
+                attachedProperties:AnimateSlideInFromRightProperty.Value="{Binding ShowAdminSidebar, Converter={valueConverters:BooleanInvertConverter}}"
+                BorderBrush="{StaticResource RedBrush}">
+                <TextBlock>
+                    Вашей задачей является:<LineBreak />
+                    1. Добавление новых<LineBreak />
+                    сотрудников<LineBreak />
+                    2. Просмотр всех<LineBreak />
+                    сотрудников<LineBreak />
+                    3. Отслеживание работы<LineBreak />
+                    сотрудников</TextBlock>
+            </Border>
+            <Border
+                Grid.Column="1"
+                Padding="30"
+                attachedProperties:AnimateSlideInFromRightProperty.Value="{Binding ShowAdminSidebar}"
+                Background="#a1bbd6"
+                BorderBrush="Black"
+                BorderThickness="0.3,0,0,0">
+                <Grid Margin="0,70,0,0" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Button
+                        Grid.Row="0"
+                        Width="Auto"
+                        Margin="0,10"
+                        Command="{Binding EmployeesCommand}"
+                        Content="Сотрудники"
+                        FontSize="16" />
+                    <Button
+                        Grid.Row="1"
+                        Width="Auto"
+                        Margin="0,10"
+                        Command="{Binding NewEmployeeCommand}"
+                        Content="Новый сотрудник"
+                        FontSize="16" />
+                    <Button
+                        Grid.Row="2"
+                        Width="Auto"
+                        Margin="0,10"
+                        Command="{Binding OrdersCommand}"
+                        Content="Заказы"
+                        FontSize="16" />
+                    <Button
+                        Grid.Row="3"
+                        Width="Auto"
+                        Margin="0,10"
+                        Command="{Binding PersonalInfoCommand}"
+                        Content="Personal Info"
+                        FontSize="16" />
+                    <Button
+                        Grid.Row="4"
+                        Width="Auto"
+                        Margin="0,10"
+                        Command="{Binding ExitCommand}"
+                        Content="Exit"
+                        FontSize="16" />
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+
+</pages:BasePage>
