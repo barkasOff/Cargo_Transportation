@@ -46,7 +46,7 @@
                 <TextBlock
                     Grid.Row="2"
                     Style="{StaticResource UserChoise}"
-                    Text="Исходящий/Входящий (И / В)" />
+                    Text="Исходящий/Входящий" />
                 <TextBlock
                     Grid.Row="3"
                     Style="{StaticResource UserChoise}"
@@ -73,13 +73,14 @@
                     Style="{StaticResource EnterOrderParameter}"
                     Tag="Вес товара"
                     Text="{Binding OrderWeight, Mode=TwoWay}" />
-                <TextBox
+                <ComboBox
                     Grid.Row="2"
                     Grid.Column="1"
-                    MaxLength="1"
-                    Style="{StaticResource EnterOrderParameter}"
                     Tag="Исходящий/Входящий"
-                    Text="{Binding InputOrOutput, Mode=TwoWay}" />
+                    Text="{Binding InputOrOutput, Mode=TwoWay}">
+                    <TextBlock Text="Исходящий" />
+                    <TextBlock Text="Входящий" />
+                </ComboBox>
                 <TextBox
                     Grid.Row="3"
                     Grid.Column="1"

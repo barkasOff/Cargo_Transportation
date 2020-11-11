@@ -39,7 +39,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
         private Product         Create_New_Order() => new Product(StatusOfProduct.Inpprocessing)
         {
             Name = OrderName,
-            OutgoingIncoming = InputOrOutput == "И",
+            OutgoingIncoming = InputOrOutput == "Исходящий",
             ProductWeight = _orderWeight,            
         };
         private Route           Create_New_Route(Product product) => new Route(DeliveryDate, DateTime.Now)

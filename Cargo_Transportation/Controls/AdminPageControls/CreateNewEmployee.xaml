@@ -85,13 +85,13 @@
                     Style="{StaticResource EnterOrderParameter}"
                     Tag="Эл. почта"
                     Text="{Binding Email, Mode=TwoWay}" />
-                <TextBox
+                <ComboBox
                     Grid.Row="3"
                     Grid.Column="1"
-                    MaxLength="50"
-                    Style="{StaticResource EnterOrderParameter}"
-                    Tag="Должность"
-                    Text="{Binding Position, Mode=TwoWay}" />
+                    Text="{Binding Position, Mode=TwoWay}">
+                    <TextBlock Text="Dispatcher" />
+                    <TextBlock Text="Driver" />
+                </ComboBox>
                 <TextBox
                     Grid.Row="4"
                     Grid.Column="1"
