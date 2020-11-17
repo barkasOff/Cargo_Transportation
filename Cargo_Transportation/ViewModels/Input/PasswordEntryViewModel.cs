@@ -1,5 +1,12 @@
-﻿using Cargo_Transportation.ViewModels.Base;
+﻿using Cargo_Transportation.DBProvider;
+using Cargo_Transportation.Dialog;
+using Cargo_Transportation.DIHelpers;
+using Cargo_Transportation.Enums;
+using Cargo_Transportation.Interfaces;
+using Cargo_Transportation.Security;
+using Cargo_Transportation.ViewModels.Base;
 using System.Security;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Cargo_Transportation.ViewModels.Input
@@ -25,7 +32,7 @@ namespace Cargo_Transportation.ViewModels.Input
         {
             EditCommand = new RelayCommand(Edit);
             CancelCommand = new RelayCommand(Cancel);
-            SaveCommand = new RelayCommand(Save);
+            SaveCommand = new RelayCommandParameter(async (parameter) => await SaveAsync(parameter));
             // TODO: Replace with localization text
             CurrentPasswordHintText = "Current Password";
             NewPasswordHintText = "New Password";
@@ -42,9 +49,23 @@ namespace Cargo_Transportation.ViewModels.Input
         {
             Editing = false;
         }
-        public void             Save()
+        public async Task       SaveAsync(object parameter)
         {
+            var curpass = (parameter as IChangePassword)?.CurPass?.Unsecure();
+            var newpass = (parameter as IChangePassword)?.NewPass?.Unsecure();
+            var repnewpass = (parameter as IChangePassword)?.RepNewPass?.Unsecure();
 
+            if (curpass != IoC.Application_Work.Current_User.Parol)
+                await IoC.UI.CommunicationDialog(new MessageBoxDialogViewModel { Message = "Set the correct current password!!", Title = "Error" });
+            else if (newpass != repnewpass)
+                await IoC.UI.CommunicationDialog(new MessageBoxDialogViewModel { Message = "Not the same input passwords!!", Title = "Error" });
+            else
+            {
+                // TODO: Validation
+                IoC.Application_Work.Current_User.Parol = newpass;
+                WorkWithDB.UpdateUserInfo(IoC.Application_Work.Current_User, UpdateClientData.Password);
+                Editing = false;
+            }
         }
     }
 }

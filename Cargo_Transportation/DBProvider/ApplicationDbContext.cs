@@ -1,5 +1,6 @@
 ﻿using Cargo_Transportation.Models;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cargo_Transportation.DBProvider
 {
@@ -16,5 +17,5 @@ namespace Cargo_Transportation.DBProvider
             //optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=usersdb2;Username=postgres;Password=password");
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=CTC; Trusted_Connection=True");
         }
-    }
+	}
 }

@@ -6,6 +6,7 @@
         PhoneNumber = 1,
         Email = 2,
         CompanyName = 3,
-        none = 4
+        Password = 4,
+        none = 5
     }
 }

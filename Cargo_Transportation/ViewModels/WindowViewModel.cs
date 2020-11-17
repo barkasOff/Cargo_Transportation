@@ -15,7 +15,7 @@ namespace Cargo_Transportation.ViewModels
     {
         private readonly Window                 _window;
         private readonly int                    _outerMarginSize = 10;
-        private int                             _windowRadious = 0;
+        private int                             _windowRadious = 3;
         private readonly WindowDockPosition     _windowDockPosition = WindowDockPosition.Undocked;
 
         public double                           MinWidth { get; set; } = 800;

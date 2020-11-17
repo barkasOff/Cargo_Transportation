@@ -2,6 +2,7 @@
     x:Class="Cargo_Transportation.Pages.LogRegPages.LoginPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:attachedproperties="clr-namespace:Cargo_Transportation.AttachedProperties"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Cargo_Transportation.Pages.LogRegPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -32,6 +33,8 @@
             </Grid.RowDefinitions>
             <TextBox
                 Grid.Row="0"
+                attachedproperties:FocusAndSelectProperty.Value="{Binding SelectLogin}"
+                KeyDown="TextBox_KeyDown"
                 MaxLength="20"
                 Style="{StaticResource AuthorizationTB}"
                 Tag="Enter your login:"
@@ -39,6 +42,8 @@
             <PasswordBox
                 x:Name="PasswordText"
                 Grid.Row="1"
+                attachedproperties:FocusAndSelectProperty.Value="{Binding SelectPassword}"
+                KeyDown="PasswordText_KeyDown"
                 Style="{StaticResource AuthorizationPB}"
                 Tag="Enter your password:" />
             <Grid Grid.Row="2" Margin="0,2">
@@ -47,22 +52,24 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Button
+                    Name="EnterBTN"
                     Grid.Column="0"
                     Width="Auto"
                     Command="{Binding LoginCommand}"
                     CommandParameter="{Binding ElementName=LPage}"
-                    Content="Войти" />
+                    Content="Enter" />
                 <Button
+                    Name="CancelBTN"
                     Grid.Column="1"
                     Width="Auto"
                     Command="{Binding CancelCommand}"
-                    Content="Отмена" />
+                    Content="Cancel" />
             </Grid>
             <Button
                 Grid.Row="3"
                 Margin="0,2"
                 Command="{Binding GOTORegisterPageCommand}"
-                Content="Еще не зарегистрированы??"
+                Content="Not registered yet??"
                 Style="{StaticResource DescriptionButton}" />
         </Grid>
     </Border>

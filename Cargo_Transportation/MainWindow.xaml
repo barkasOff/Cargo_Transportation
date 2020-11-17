@@ -15,6 +15,7 @@
     Activated="Window_Activated"
     AllowsTransparency="True"
     Deactivated="Window_Deactivated"
+    Icon="/Images/Cargo.ico"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">

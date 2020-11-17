@@ -76,7 +76,6 @@
                 <ComboBox
                     Grid.Row="2"
                     Grid.Column="1"
-                    Tag="Исходящий/Входящий"
                     Text="{Binding InputOrOutput, Mode=TwoWay}">
                     <TextBlock Text="Исходящий" />
                     <TextBlock Text="Входящий" />

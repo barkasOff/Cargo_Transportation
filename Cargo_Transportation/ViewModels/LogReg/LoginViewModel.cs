@@ -13,6 +13,8 @@ namespace Cargo_Transportation.ViewModels.LogReg
     public class                LoginViewModel : BaseViewModel
     {
         public string           Login { get; set; }
+        public bool             SelectPassword { get; set; }
+        public bool             SelectLogin { get; set; }
 
         public ICommand         LoginCommand { get; set; }
         public ICommand         CancelCommand { get; set; }
@@ -49,10 +51,13 @@ namespace Cargo_Transportation.ViewModels.LogReg
                     break;
                 case AplicationUser.Admin:
                     IoC.AdminView.Update_PA();
+                    IoC.AdminView.CreateNewEmployeeViewModel.InitCars();
                     IoC.Application.GoToPage(ApplicationPage.Admin);
                     IoC.AdminView.Set_Employees();
                     break;
                 default:
+                    SelectLogin = true;
+                    SelectLogin = false;
                     await IoC.UI.CommunicationDialog(new MessageBoxDialogViewModel() { Title = "Error", Message = "Who are you?" });
                     break;
             }
@@ -60,6 +65,8 @@ namespace Cargo_Transportation.ViewModels.LogReg
         private void            CancelMethod()
         {
             Login = "";
+            SelectPassword = true;
+            SelectPassword = false;
         }
     }
 }

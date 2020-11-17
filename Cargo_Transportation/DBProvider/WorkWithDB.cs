@@ -1,4 +1,5 @@
 ﻿using Cargo_Transportation.DIHelpers;
+using Cargo_Transportation.Enums;
 using Cargo_Transportation.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -116,6 +117,43 @@ namespace Cargo_Transportation.DBProvider
             dbRoute.CarId = null;
             context.Routes.Update(dbRoute);
             context.SaveChanges();
+        }
+        public static async void            UpdateUserInfo(User user, UpdateClientData updateClientData)
+		{
+            var us = IoC.Application_Work.All_Users.First(u => u.Id == user.Id);
+
+            if (us is Client curus)
+            {
+                using var context = new ApplicationDbContext();
+                var dbClient = context.Clients.First(u => u.Id == user.Id);
+                if (updateClientData == UpdateClientData.CompanyName)
+                {
+                    curus.CompanyName = (user as Client).CompanyName;
+                    dbClient.CompanyName = (user as Client).CompanyName;
+                }
+                else if (updateClientData == UpdateClientData.Email)
+                {
+                    curus.Email = (user as Client).Email;
+                    dbClient.Email = (user as Client).Email;
+                }
+                else if(updateClientData == UpdateClientData.PhoneNumber)
+                {
+                    curus.PhoneNumber = (user as Client).PhoneNumber;
+                    dbClient.PhoneNumber = (user as Client).PhoneNumber;
+                }
+                else if(updateClientData == UpdateClientData.FullName)
+                {
+                    curus.FullName = (user as Client).FullName;
+                    dbClient.FullName = (user as Client).FullName;
+                }
+                else if(updateClientData == UpdateClientData.Password)
+                {
+                    curus.Parol = (user as Client).Parol;
+                    dbClient.Parol = (user as Client).Parol;
+                }
+                await Task.Run(() => context.Clients.Update(dbClient));
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

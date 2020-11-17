@@ -9,6 +9,7 @@
     MinWidth="{Binding MinWidth}"
     MinHeight="{Binding MinHeight}"
     AllowsTransparency="True"
+    Icon="/Images/Info.ico"
     ResizeMode="NoResize"
     SizeToContent="WidthAndHeight"
     WindowStartupLocation="CenterScreen"

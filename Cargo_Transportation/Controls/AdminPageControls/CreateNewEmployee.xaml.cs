@@ -11,5 +11,5 @@ namespace Cargo_Transportation.Controls.AdminPageControls
         {
             InitializeComponent();
         }
-    }
+	}
 }

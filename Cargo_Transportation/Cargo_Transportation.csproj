@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Images\Cargo.ico" />
+    <None Remove="Images\Info.ico" />
     <None Remove="Images\Russia.ico" />
   </ItemGroup>
 
@@ -38,6 +40,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Cargo.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Info.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Russia.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

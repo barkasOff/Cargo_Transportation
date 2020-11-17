@@ -10,12 +10,13 @@ namespace Cargo_Transportation.AttachedProperties
     {
         public override void    OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            if (sender is TextBoxBase control && (bool)e.NewValue)
+            if (sender is TextBox control && (bool)e.NewValue)
             {
                 control.Focus();
-                control.SelectAll();
+                if (control.Text != "")
+                    control.SelectAll();
             }
-            else if (sender is PasswordBox password && (bool)e.NewValue)
+            else if (sender is PasswordBox password && (bool)e.NewValue && password.Password != "")
             {
                 password.Focus();
                 password.SelectAll();

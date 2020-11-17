@@ -14,7 +14,7 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
         private int             _orderWeight = 0;
         public string           OrderName { get; set; }
         public string           OrderWeight { get; set; }
-        public string           InputOrOutput { get; set; }
+        public string           InputOrOutput { get; set; } = "Test";
         public string           OrderFrom { get; set; }
         public string           OrderTo { get; set; }
         public DateTime         DeliveryDate { get; set; }
@@ -27,12 +27,11 @@ namespace Cargo_Transportation.ViewModels.UserPageViewModels
             CreateNewOrderCommand = new RelayCommand(CreateNewOrderMethodAsync);
             DeliveryDate = DateTime.Now;
         }
-
         private bool            Check_Input_Data()
         {
-            if (InputOrOutput != "В" && InputOrOutput != "И" ||
-                OrderName == string.Empty || !int.TryParse(OrderWeight, out _orderWeight) ||
-                OrderFrom == string.Empty || OrderTo == string.Empty)
+            if (InputOrOutput == string.Empty || OrderName == string.Empty || !int.TryParse(OrderWeight, out _orderWeight)
+                                              || _orderWeight > 2000 || _orderWeight < 10
+                                              || OrderFrom == string.Empty || OrderTo == string.Empty)
                 return (false);
             return (true);
         }

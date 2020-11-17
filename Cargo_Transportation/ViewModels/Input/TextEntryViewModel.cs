@@ -1,4 +1,5 @@
-﻿using Cargo_Transportation.DIHelpers;
+﻿using Cargo_Transportation.DBProvider;
+using Cargo_Transportation.DIHelpers;
 using Cargo_Transportation.Enums;
 using Cargo_Transportation.Models;
 using Cargo_Transportation.ViewModels.Base;
@@ -68,14 +69,11 @@ namespace Cargo_Transportation.ViewModels.Input
         }
         private async void      Update_Real_Data()
         {
-            // TODO: Add to db
             await Task.Run(() =>
             {
-                //foreach (var us in IoC.Application_Work.All_Users)
-                //    if (us == )
-
                 Update_Client_Data();
                 IoC.UserView.PersonalAreaVM.Update_User_PA();
+                WorkWithDB.UpdateUserInfo(IoC.Application_Work.Current_User, UpdateClientData);
             });
         }
     }
